@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class AddExperimentActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.nameInput) EditText mNameInput;
@@ -20,6 +21,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_experiment);
+        ButterKnife.bind(this);
+        mSubmitButton.setOnClickListener(this);
     }
 
     @Override

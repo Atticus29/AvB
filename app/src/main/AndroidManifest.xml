@@ -23,9 +23,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.MainActivity" />
         </activity>
-        <activity android:name=".ExperimentActivity" />
+        <activity android:name=".ExperimentActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.MainActivity" />
+        </activity>
         <activity android:name=".AddExperimentActivity" />
-        <activity android:name=".AllExperimentsActivity"></activity>
+        <activity android:name=".AllExperimentsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
