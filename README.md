@@ -56,6 +56,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 ### Activities
 - [ ] MainActivity (landing page)
 - [ ] AboutActivity (how the app works)
+- [ ] AddExperimentActivity (with TextEdit fields)
 - [ ] ExperimentsActivity (ListView of experiment names/timestamps?)
 - [ ] ExperimentActivity (view of a single experiment with its two treatments, stats, and buttons to add success and failure trials to treatments)
 
