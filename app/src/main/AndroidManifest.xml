@@ -21,9 +21,9 @@
         <activity android:name=".AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.MainActivity">
-            </meta-data>
+                android:value="com.epicodus.avb.MainActivity"></meta-data>
         </activity>
+        <activity android:name=".ExperimentActivity"></activity>
     </application>
 
 </manifest>
