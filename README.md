@@ -38,8 +38,9 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] Continue using good coding practices, especially indenting properly, commenting complex code segments, making logically separate Git commits, including a detailed README, and removing commented-out code and logging statements before committing.
 
 ### Models
-- [ ] Experiment (String)
-- [ ] Date created (whatever the date object is in Java)
+- [ ] Experiment
+  - [ ] Name (String)
+  - [ ] Date created (whatever the date object is in Java)
   - [ ] Treatment1 (String)
     - [ ] Successes (int)
     - [ ] Failures (int)
