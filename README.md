@@ -39,15 +39,15 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 ### Models
 - [ ] Experiment
-  - [ ] Name (String)
+  - [x] Name (String)
   - [ ] Date created (whatever the date object is in Java)
-  - [ ] Treatment1 (String)
-    - [ ] Successes (int)
-    - [ ] Failures (int)
-  - [ ] Treatment 2 (String)
-    - [ ] Successes (int)
-    - [ ] Failures (int)
-  - [ ] Effect size (double)
+  - [x] Treatment1 (String)
+    - [x] Successes (int)
+    - [x] Failures (int)
+  - [x] Treatment 2 (String)
+    - [x] Successes (int)
+    - [x] Failures (int)
+  - [x] Effect size (double)
   - [ ] Minimum required trials per treatment for statistical significance to be reached (rounded ceiling int, get calculated in constructor rather than user input)
 
 ### Forms
