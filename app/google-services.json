@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "658562571568",
+    "firebase_url": "https://avsb-daecd.firebaseio.com",
+    "project_id": "avsb-daecd",
+    "storage_bucket": "avsb-daecd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658562571568:android:fe40a18e176f108b",
+        "android_client_info": {
+          "package_name": "com.epicodus.avb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658562571568-bcbq3avb758jhjamks686epl82mbkjrr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.avb",
+            "certificate_hash": "2a3b4156493ee508c5e98ec1f62fc08d5dd046c8"
+          }
+        },
+        {
+          "client_id": "658562571568-omvf5292v6gn2llg0jt0pgk06i54gfkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxK-7n2x24U2ZMXU_iXEPvI5vksaYdM1M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658562571568-omvf5292v6gn2llg0jt0pgk06i54gfkj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

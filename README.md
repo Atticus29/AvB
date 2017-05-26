@@ -25,7 +25,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 ## Planning
 
 ### Master Checklist
-- [ ] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc. activities.
+- [x] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc. activities.
 - [ ] Build these activities out with designs, UI, and functionality as much as possible.
 - [ ] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.
 - [ ] Display a list of information. Build this out as much as possible.
