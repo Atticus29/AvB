@@ -1,15 +1,19 @@
 package com.epicodus.avb;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.appTitleText) TextView mTitle;
+    @Bind(R.id.aboutButton) Button mAboutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +22,15 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
         mTitle.setTypeface(spaceAge);
+        mAboutButton.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v){
+        if(v == mAboutButton){
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        }
     }
 }
