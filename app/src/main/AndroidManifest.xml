@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.avb">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,7 +30,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.MainActivity" />
         </activity>
-        <activity android:name=".AddExperimentActivity" />
+        <activity android:name=".AddExperimentActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.AllExperimentsActivity" />
+        </activity>
+
         <activity android:name=".AllExperimentsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
