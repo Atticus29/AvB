@@ -5,43 +5,83 @@
 ## By: Mark Fisher
 
 ## Description
-The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I was practicing was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are a design staple for many large commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
+The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are a design staple for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
 
-AvB is an Android mobile app that aims to
+AvB is an Android mobile app that aims to bring A/B testing optimization to daily life. Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my win rate? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for _Varroa_ mites really make a difference?, etc., etc.
 
-### Set Up
-
-
+AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size)...
 
 ## User stories
-- [x] As a user, I'd like to visit a page to see a list of all team or club members.
-- [x] As a user, I'd like to click a team or club member's entry in the list to visit their profile page, which should include more details about them.
-- [x] As a user, I'd like the option to visit an "About" page that explains what the club is, and what they do.
-- [x] As a user, I'd like all data persisted in a database, so it's always there when I need it.
-- [x] As a user, I'd like to filter the list of users by their particular role in the group, or some other information/category. (For instance, a club may have a treasurer, president, and/or secretary. A sports team may have a goalie, forward, or striker, a book club may have founders and attendees. You're also welcome to filter by something other than role, if it's more relevant to your project.)
-- [x] As an administrator, I want to add new users to the club. (User authentication is not required).
-- [x] As an administrator, I want to edit user profiles, in case I make a mistake, or need to update their details.
-- [x] As an administrator, need the option to delete a user, in case they leave the club or team.
+- [ ] As a user, I'd like to be able to create a new experiment.
+- [ ] As a user, I'd like to be able to add two different treatment categories to the experiment.
+- [ ] As a user, I'd like to be able to add a successful trial to a treatment.
+- [ ] As a user, I'd like to be able to add a failed trial to a treatment.
+- [ ] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
+- [ ] As a user, I'd like to be able to see all of my created experiments.
+- [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
+- [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
+- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
+
+## Planning
+
+### Master Checklist
+- [ ] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc activities.
+- [ ] Build these activities out with designs, UI, and functionality as much as possible.
+- [ ] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.
+- [ ] Display a list of information. Build this out as much as possible.
+- [ ] Implement custom adapters (both Array and from scratch)
+- [ ] Use custom typefaces to enhance your designs.
+- [ ] Gather user input and pass it to another activity.
+- [ ] Use ButterKnife to bind all views.
+- [ ] Implement the View.OnClickListener interface to set click listeners to view elements.
+- [ ] Manually test your app thoroughly before submitting. A reproducible runtime crash is not acceptable. If you cannot fix the error, submit and reference the error in your readme.
+- [ ] Continue using good coding practices, especially indenting properly, commenting complex code segments, making logically separate Git commits, including a detailed README, and removing commented-out code and logging statements before committing.
+
+### Models
+- [ ] Experiment (String)
+- [ ] Date created (whatever the date object is in Java)
+  - [ ] Treatment1 (String)
+    - [ ] Successes (int)
+    - [ ] Failures (int)
+  - [ ] Treatment 2 (String)
+    - [ ] Successes (int)
+    - [ ] Failures (int)
+  - [ ] Effect size (double)
+  - [ ] Minimum required trials per treatment for statistical significance to be reached (rounded ceiling int, get calculated in constructor rather than user input)
+
+### Forms
+- [ ] Create experiment (DialogFragment?); toasts for invalid forms
+
+### Activities
+- [ ] MainActivity (landing page)
+- [ ] AboutActivity (how the app works)
+- [ ] ExperimentsActivity (ListView of experiment names/timestamps?)
+- [ ] ExperimentActivity (view of a single experiment with its two treatments, stats, and buttons to add success and failure trials to treatments)
+
+### Adapters
+- [ ] ExperimentAdapter (for listing experiment object names/timestamps)
+
+### API
+- [ ] Twitter (to Tweet results of completed experiments)
 
 ## Specs/
 | Behavior                   | Input Example     | Output Example    |
 | -------------------------- | -----------------:| -----------------:|
-|User can filter the list of users by their particular role in the group|User indicates filter by role|Filter removes entries that don't fit the criteria|
-|User can filter the list of users by their sphere of influence|User indicates filter by role|Filter removes entries that don't fit the criteria|
-|Administrator can add new users to the club. |Admin. indicates that they want to add a new user|New user is generated|
-|Administrator can edit user profiles|Admin. indicates that they want to edit a user profile|Changes to user profile are persisted|
-|Administrator can remove user profiles|Admin. indicates that they want to remove a user profile|Removal of user profiles are persisted|
+|User can enter experiment details|User enters experiment name, treatment 1 name, treatment 2 name, effect size|experiment details recorded|
+|User can enter successful trial of a particular treatment of a particular experiment|User reports successful trial of treatment2|successful trial of treatment2 recorded|
+|User can enter failed trial of a particular treatment of a particular experiment|User reports failed trial of treatment2|failed trial of treatment2 recorded|
+
+
+### Set Up
+
+* Clone repository from GitHub: Navigate to your computer's terminal and type, `git clone https://github.com/Atticus29/AvB.git`
+* Open Android Studio (if not already installed, [begin install process here](https://developer.android.com/studio/index.html))
+*
 
 ### Future Functionality
-- [x] Deploy your application. Include a link to the live site in your project's README.
-- [ ] Improve form validation
-- [ ]
-- [ ] Add Admin login
-- [ ] Add functionality to keep track of stats, if relevant. Is your roster for a sports club? Keep track of the individual players' scoring percentage. An extracurricular course or seminar? Keep track of attendance or grades. A hiking group? Keep track of the number of miles each person has hiked with the club, etc.
-- [ ] Add a message board area, where club members may chat with each other.
-- [ ] Include an area called "announcements", "events", "games", etc. where users can post what events, matches, or meetings the club has planned.
-- [ ] Consider implementing AngularFire/Firebase user authentication (Note that this goes beyond the scope of our curriculum, and will require you to complete outside research. Begin with the AngularFire documentation on User Authentication.)
-- [ ] Add timestamp to firebase entries
+- [ ] Add twitter API
+- [ ] Add user authentication
+- [ ] Add DB persistence
 
 # License
 
@@ -67,99 +107,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 ---
-
-## Planning
-
-- [x] Components are used to create display and behavior for templates.
-- [x] A router is used to navigate between different pages, including at least one dynamic route.
-- [x] A service shares data between multiple components.
-- [x] Application can create, edit, and delete instances of a model, persisting all changes in Firebase.
-- [x] Data is retrieved from Firebase and displayed in the application.
-- [x] Models can be filtered using a custom pipe.
-- [x] Project demonstrates understanding of week's concepts. If prompted, you are able to discuss your code with an instructor using correct terminology.
-- [x] Project is in a polished, portfolio-quality state.
-- [x] Required functionality was in place by the Friday deadline.
-
-### Model(s)
-  - [x] Model: member
-      - [x] First name (string)
-      - [x] Last name (string)
-      - [x] Illuminati nickname (string)
-      - [x] Sector of influence (string) (technology, politics, media, culture, commerce)
-      - [x] Number of twitter followers (number)
-      - [x] Net worth (number)
-      - [x] Political impact quotient (number)
-      - [x] Suspicion that you're a member of the Illuminati quotient (number)
-      - [ ] Influence quotient (number) = twitter followers/twitter population + net worth/sum world wealth + political impact quotient - Suspicion that you're a member of the Illuminati quotient
-      - [x] Role in the organization (string: Black King, Black Queen, White Queen, White King, General Member, Treasurer, Secretary/Archivist)
-
-### Components
-
-- [x] **about**: I want to log a newly-admitted animal by submitting a form with animal species, name, age, diet, zoo location, number of needed caretakers, sex, one like and one dislike.
-- [x] **members-display**:As a user, I'd like to visit a page to see a list of all team or club members.
-- [x] **member-details**: As a user, I'd like to click a team or club member's entry in the list to visit their profile page, which should include more details about them.
-- [x] **add-member**: As an administrator, I want to add new users to the club. (User authentication is not required).
-- [x] **edit-member**: As an administrator, I want to edit user profiles, in case I make a mistake, or need to update their details.
-
-
-### Pipes
-
-- [x] I want options to view all members
-- [x] I want to filter by sector of influence
-- [x] I want to filter by group role
-
-### Forms
-- [x] Add member
-- [x] Edit member
-
----
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Prerequisites/Installation
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Bower](https://bower.io/)
-* [Angular](TODO)
+* [Android Studio](https://developer.android.com/studio/index.html)
 
 ## Dependencies
-
-* Materialize (should be set up automatically upon build of this webapp, but if not, simply navigate to the project directory in terminal and type, `bower install Materialize  `)
-* *Firebase (should be set up automatically upon build of this webapp, but if not, simply navigate to the project directory in terminal and type, `ember install emberfir`)*
-
-
-## Setup
-
-Download this project [here](https://github.com/Atticus29/illuminati/archive/master.zip)
-
-Run `ng serve` for a dev server. Navigate to [http://localhost:4200/](http://localhost:4200/). The app will automatically reload if you change any of the source files.
+* None yet
