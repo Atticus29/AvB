@@ -5,9 +5,9 @@
 ## By: Mark Fisher
 
 ## Description
-The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are a design staple for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
+The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are an essential tool for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
 
-AvB is an Android mobile app that aims to bring A/B testing optimization to daily life. Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my win rate? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for _Varroa_ mites really make a difference?, etc., etc.
+AvB is an Android mobile app that aims to bring A/B testing optimization to daily life. Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my rate of victory? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for _Varroa_ mites really make a difference?, etc., etc.
 
 AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size)...
 
@@ -54,14 +54,15 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] Create experiment (DialogFragment?); toasts for invalid forms
 
 ### Activities
-- [ ] MainActivity (landing page)
-- [ ] AboutActivity (how the app works)
-- [ ] AddExperimentActivity (with TextEdit fields)
-- [ ] ExperimentsActivity (ListView of experiment names/timestamps?)
+- [x] MainActivity (landing page)
+- [x] AboutActivity (how the app works)
+- [x] AddExperimentActivity (with TextEdit fields)
+- [ ] AllExperimentsActivity (ListView of experiment names/timestamps?)
 - [ ] ExperimentActivity (view of a single experiment with its two treatments, stats, and buttons to add success and failure trials to treatments)
 
 ### Adapters
-- [ ] ExperimentAdapter (for listing experiment object names/timestamps)
+- [ ] BriefExperimentAdapter (for listing experiment object names/timestamps)
+- [ ] DetailedExperimentAdapter (for listing experiment object names/timestamps)
 
 ### API
 - [ ] Twitter (to Tweet results of completed experiments)
@@ -81,9 +82,9 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 *
 
 ### Future Functionality
+- [ ] Add DB persistence
 - [ ] Add twitter API
 - [ ] Add user authentication
-- [ ] Add DB persistence
 
 # License
 
