@@ -1,10 +1,13 @@
 package com.epicodus.avb;
 
+import java.util.ArrayList;
+
 /**
  * Created by mf on 5/26/17.
  */
 
 public class Experiment {
+    public static ArrayList<Experiment> allExperiments = new ArrayList<>();
     private String name;
     private String treatmentOneName;
     private String treatmentTwoName;
@@ -25,5 +28,41 @@ public class Experiment {
         this.treatmentTwoFailures = 0;
         this.treatmentTwoSucesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTreatmentOneName() {
+        return treatmentOneName;
+    }
+
+    public String getTreatmentTwoName() {
+        return treatmentTwoName;
+    }
+
+    public int getTreatmentOneSucesses() {
+        return treatmentOneSucesses;
+    }
+
+    public int getTreatmentTwoSucesses() {
+        return treatmentTwoSucesses;
+    }
+
+    public int getTreatmentOneFailures() {
+        return treatmentOneFailures;
+    }
+
+    public int getTreatmentTwoFailures() {
+        return treatmentTwoFailures;
+    }
+
+    public double getDesiredEffectSize() {
+        return desiredEffectSize;
+    }
+
+    public int getMinimumTrialsRequired() {
+        return minimumTrialsRequired;
     }
 }
