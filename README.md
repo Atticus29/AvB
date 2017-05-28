@@ -1,6 +1,7 @@
 # AvB
+An A/B tester for life
 
-## 26 May, 2017
+## 26- May, 2017
 
 ## By: Mark Fisher
 
@@ -26,14 +27,14 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 ### Master Checklist
 - [x] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc. activities.
-- [ ] Build these activities out with designs, UI, and functionality as much as possible.
-- [ ] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.
-- [ ] Display a list of information. Build this out as much as possible.
+- [x] Build these activities out with designs, UI, and functionality as much as possible.
+- [x] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.
+- [x] Display a list of information. Build this out as much as possible.
 - [ ] Implement custom adapters (both Array and from scratch)
-- [ ] Use custom typefaces to enhance your designs.
-- [ ] Gather user input and pass it to another activity.
-- [ ] Use ButterKnife to bind all views.
-- [ ] Implement the View.OnClickListener interface to set click listeners to view elements.
+- [x] Use custom typefaces to enhance your designs.
+- [x] Gather user input and pass it to another activity.
+- [x] Use ButterKnife to bind all views.
+- [x] Implement the View.OnClickListener interface to set click listeners to view elements.
 - [ ] Manually test your app thoroughly before submitting. A reproducible runtime crash is not acceptable. If you cannot fix the error, submit and reference the error in your readme.
 - [ ] Continue using good coding practices, especially indenting properly, commenting complex code segments, making logically separate Git commits, including a detailed README, and removing commented-out code and logging statements before committing.
 
