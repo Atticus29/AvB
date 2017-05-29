@@ -39,7 +39,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [x] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.
 - [x] Display a list of information. Build this out as much as possible.
 - [x] Implement custom adapters (Array)
-- [ ] Implement custom adapters (from scratch)
+- [x] Implement custom adapters (from scratch)
 - [x] Use custom typefaces to enhance your designs.
 - [x] Gather user input and pass it to another activity.
 - [x] Use ButterKnife to bind all views.
