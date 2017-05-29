@@ -10,20 +10,19 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving. The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are a design staple for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
-
-AvB is an Android mobile app that aims to bring A/B testing optimization to daily life. Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my win rate? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for _Varroa_ mites really make a difference?, etc., etc.
-
-AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size)...
-"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.\n\n Motivation:\nThe other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are an essential tool for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
+
+AvB is an Android mobile app that aims to bring A/B testing optimization to daily life.\n\n Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my chances of victory? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for Varroa mites really make a difference?, etc., etc.
+\n\nAvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size). Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
+"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.278" />
 </android.support.constraint.ConstraintLayout>
