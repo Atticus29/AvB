@@ -40,16 +40,21 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
             String effectSizeInput = mEffectSizeInput.getText().toString();
             if(!name.matches("") && !treatmentOne.matches("") && !treatmentTwo.matches("") && !effectSizeInput.matches("")){
                 double effectSizeAsNumber = parseDouble(effectSizeInput);
-                Intent intent = new Intent(AddExperimentActivity.this, ExperimentActivity.class);
+                if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0){
+                    Intent intent = new Intent(AddExperimentActivity.this, ExperimentActivity.class);
 
-                //Eventually, it would be idea to figure out how to pass an entire object through the intent. Perhaps this will be resolved when the data is persisted as JSON
-                Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
-                Experiment.allExperiments.add(newExperiment);
-                intent.putExtra("name", newExperiment.getName());
-                intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
-                intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());
+                    //Eventually, it would be idea to figure out how to pass an entire object through the intent. Perhaps this will be resolved when the data is persisted as JSON
+                    Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
+                    Experiment.allExperiments.add(newExperiment);
+                    intent.putExtra("name", newExperiment.getName());
+                    intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
+                    intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());
 
-                startActivity(intent);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(AddExperimentActivity.this, "Effect size must range between 0 and 1.", Toast.LENGTH_SHORT).show();
+                }
+
             } else{
                 Toast.makeText(AddExperimentActivity.this, "Please make sure to fill out all input fields!", Toast.LENGTH_SHORT).show();
             }
