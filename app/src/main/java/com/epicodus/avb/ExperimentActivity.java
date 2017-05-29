@@ -1,6 +1,7 @@
 package com.epicodus.avb;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,13 +26,15 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
+        Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
 
         Intent intent = getIntent();
         String experimentName = intent.getStringExtra("name");
         String treatmentOneName = intent.getStringExtra("treatmentOneName");
         String treatmentTwoName = intent.getStringExtra("treatmentTwoName");
         String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
-        String output = String.format("Experiment: %s\nTreatment 1: %s\nTreatment 2: %s", experimentName, treatmentOneName, treatmentTwoName);
+        String output = String.format("Experiment: %s", experimentName);
+        mSingleExperimentText.setTypeface(spaceAge);
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
         mTreatmentGrid.setAdapter(new SingleTreatmentAdapter(this, treatments));
