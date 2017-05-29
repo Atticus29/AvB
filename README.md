@@ -1,24 +1,32 @@
 # AvB
-An A/B tester for life
+A mobile A/B tester for everything
 
 ## 26- May, 2017
 
 ## By: Mark Fisher
 
 ## Description
+AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.
+
+#### Motivation:
 The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to know whether a new move I had learned was increasing my success rate or decreasing it, and the thought occurred to me that this sort of optimization occurs regularly in software development. A/B tests are an essential tool for many large e-commerce sites, so why shouldn't that kind of fine-tuning be used in everyday life?
 
-AvB is an Android mobile app that aims to bring A/B testing optimization to daily life. Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my rate of victory? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for _Varroa_ mites really make a difference?, etc., etc.
+#### Example use cases:
+* Will my golf score improve if I change my swing by adding this flourish?
+* Should I ignore the haters and bowl grandma-style with two hands between my legs?
+* If I add this card to my Magic deck, will it increase my rate of victory?
+* If I make students sign the honor code before taking the exam, will the rate of cheating decrease?
+* Does treating my honeybees for _Varroa_ mites really make a difference?
 
-AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size)...
+AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size).Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
 
 ## User stories
-- [ ] As a user, I'd like to be able to create a new experiment.
-- [ ] As a user, I'd like to be able to add two different treatment categories to the experiment.
+- [x] As a user, I'd like to be able to create a new experiment.
+- [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
 - [ ] As a user, I'd like to be able to add a successful trial to a treatment.
 - [ ] As a user, I'd like to be able to add a failed trial to a treatment.
-- [ ] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
-- [ ] As a user, I'd like to be able to see all of my created experiments.
+- [x] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
+- [x] As a user, I'd like to be able to see all of my created experiments.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
 - [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
@@ -36,8 +44,8 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [x] Gather user input and pass it to another activity.
 - [x] Use ButterKnife to bind all views.
 - [x] Implement the View.OnClickListener interface to set click listeners to view elements.
-- [ ] Manually test your app thoroughly before submitting. A reproducible runtime crash is not acceptable. If you cannot fix the error, submit and reference the error in your readme.
-- [ ] Continue using good coding practices, especially indenting properly, commenting complex code segments, making logically separate Git commits, including a detailed README, and removing commented-out code and logging statements before committing.
+- [x] Manually test your app thoroughly before submitting. A reproducible runtime crash is not acceptable. If you cannot fix the error, submit and reference the error in your readme.
+- [x] Continue using good coding practices, especially indenting properly, commenting complex code segments, making logically separate Git commits, including a detailed README, and removing commented-out code and logging statements before committing.
 
 ### Models
 - [ ] Experiment
@@ -53,17 +61,18 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
   - [ ] Minimum required trials per treatment for statistical significance to be reached (rounded ceiling int, get calculated in constructor rather than user input)
 
 ### Forms
-- [ ] Create experiment (DialogFragment?); toasts for invalid forms
+- [x] Create experiment (DialogFragment?);
+- [x] Toasts for invalid form
 
 ### Activities
 - [x] MainActivity (landing page)
 - [x] AboutActivity (how the app works)
 - [x] AddExperimentActivity (with TextEdit fields)
-- [ ] AllExperimentsActivity (ListView of experiment names/timestamps?)
+- [x] AllExperimentsActivity (ListView of experiment names)
 - [ ] ExperimentActivity (view of a single experiment with its two treatments, stats, and buttons to add success and failure trials to treatments)
 
 ### Adapters
-- [ ] BriefExperimentAdapter (for listing experiment object names/timestamps)
+- [x] BriefExperimentAdapter (for listing experiment object names/timestamps)
 - [ ] DetailedExperimentAdapter (for listing experiment object names/timestamps)
 
 ### API
@@ -81,10 +90,11 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 * Clone repository from GitHub: Navigate to your computer's terminal and type, `git clone https://github.com/Atticus29/AvB.git`
 * Open Android Studio (if not already installed, [begin install process here](https://developer.android.com/studio/index.html))
-*
+* Click run in the top option bar (looks like a, "play" icon)
 
 ### Future Functionality
 - [ ] Add DB persistence
+- [ ] Statistics actually performed
 - [ ] Add twitter API
 - [ ] Add user authentication
 
