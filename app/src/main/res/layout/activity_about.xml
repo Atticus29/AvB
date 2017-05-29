@@ -17,6 +17,7 @@ AvB is an Android mobile app that aims to bring A/B testing optimization to dail
 AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size)...
 "
         app:layout_constraintTop_toTopOf="parent"
+        android:textSize="24sp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
