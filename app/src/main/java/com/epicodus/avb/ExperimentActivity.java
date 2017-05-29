@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,19 +18,23 @@ import butterknife.ButterKnife;
 public class ExperimentActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.singleExperimentText) TextView mSingleExperimentText;
     @Bind(R.id.viewAllButton) Button mViewAllButton;
+    @Bind(R.id.treatmentGrid) GridView mTreatmentGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
+
         Intent intent = getIntent();
         String experimentName = intent.getStringExtra("name");
         String treatmentOneName = intent.getStringExtra("treatmentOneName");
         String treatmentTwoName = intent.getStringExtra("treatmentTwoName");
+        String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
         String output = String.format("Experiment: %s\nTreatment 1: %s\nTreatment 2: %s", experimentName, treatmentOneName, treatmentTwoName);
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
+        mTreatmentGrid.setAdapter(new SingleTreatmentAdapter(this, treatments));
     }
 
     @Override
