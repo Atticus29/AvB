@@ -1,4 +1,4 @@
-package com.epicodus.avb;
+package com.epicodus.avb.models;
 
 import java.util.ArrayList;
 

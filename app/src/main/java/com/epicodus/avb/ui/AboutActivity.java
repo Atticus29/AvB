@@ -1,7 +1,9 @@
-package com.epicodus.avb;
+package com.epicodus.avb.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.epicodus.avb.R;
 
 public class AboutActivity extends AppCompatActivity {
 

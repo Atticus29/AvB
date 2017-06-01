@@ -1,8 +1,9 @@
-package com.epicodus.avb;
+package com.epicodus.avb.adapters;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
+
+import com.epicodus.avb.models.Experiment;
 
 import java.util.ArrayList;
 

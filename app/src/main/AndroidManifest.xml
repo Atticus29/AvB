@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,26 +20,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity">
+        <activity android:name=".ui.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.MainActivity" />
+                android:value="com.epicodus.avb.ui.MainActivity" />
         </activity>
-        <activity android:name=".ExperimentActivity">
+        <activity android:name=".ui.ExperimentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.MainActivity" />
+                android:value="com.epicodus.avb.ui.MainActivity" />
         </activity>
-        <activity android:name=".AddExperimentActivity">
+        <activity android:name=".ui.AddExperimentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.AllExperimentsActivity" />
+                android:value="com.epicodus.avb.ui.AllExperimentsActivity" />
         </activity>
 
-        <activity android:name=".AllExperimentsActivity">
+        <activity android:name=".ui.AllExperimentsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.MainActivity" />
+                android:value="com.epicodus.avb.ui.MainActivity" />
         </activity>
     </application>
 
