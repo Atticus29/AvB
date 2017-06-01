@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -19,6 +20,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.singleExperimentText) TextView mSingleExperimentText;
     @Bind(R.id.viewAllButton) Button mViewAllButton;
     @Bind(R.id.treatmentGrid) GridView mTreatmentGrid;
+    @Bind(R.id.tweetResultsButton) Button mTweetResultsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         mSingleExperimentText.setTypeface(spaceAge);
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
+        mTweetResultsButton.setOnClickListener(this);
         mTreatmentGrid.setAdapter(new SingleTreatmentAdapter(this, treatments));
     }
 
@@ -43,6 +46,10 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v){
         if(v == mViewAllButton){
             Intent intent = new Intent(ExperimentActivity.this, AllExperimentsActivity.class);
+            startActivity(intent);
+        } else if (v==mTweetResultsButton){
+            Log.d("tweetclicked", "onClick: got here");
+            Intent intent = new Intent(ExperimentActivity.this, TwitterActivity.class);
             startActivity(intent);
         }
 
