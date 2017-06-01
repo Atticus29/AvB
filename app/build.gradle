@@ -42,6 +42,10 @@ dependencies {
     compile 'com.google.firebase:firebase-database:9.2.1'
     compile 'com.twitter.sdk.android:twitter:3.0.0'
     compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
+    compile 'com.twitter.sdk.android:twitter-core:3.0.0'
+    compile 'com.twitter.sdk.android:tweet-ui:3.0.0'
+    compile 'com.twitter.sdk.android:tweet-composer:3.0.0'
+    compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
     testCompile 'junit:junit:4.12'
 }
 
