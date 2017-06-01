@@ -29,6 +29,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each{
+        it.buildConfigField 'String', 'TWITTER_CONSUMER_KEY', TWITTER_CONSUMER_KEY
+        it.buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', TWITTER_CONSUMER_SECRET
+    }
 }
 
 dependencies {
@@ -41,6 +45,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.google.firebase:firebase-database:9.2.1'
+    compile 'com.twitter.sdk.android:twitter:3.0.0'
+    compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

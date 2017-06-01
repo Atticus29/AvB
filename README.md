@@ -21,6 +21,7 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size).Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
 
 ## User stories
+- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
 - [x] As a user, I'd like to be able to create a new experiment.
 - [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
 - [ ] As a user, I'd like to be able to add a successful trial to a treatment.
@@ -29,11 +30,21 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [x] As a user, I'd like to be able to see all of my created experiments.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
-- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
 
 ## Planning
 
 ### Master Checklist
+
+#### Wk. 2
+- [ ] Implement OkHttp to retrieve data from a backend.
+- [ ] Create a data model to store the data.
+- [ ] Display a list of information using a RecyclerView, OR use fragments and a PagerAdapter to swipe through views. (You are also welcome to do both.)
+- [ ] Incorporate at least one implicit intent; Sending a message or an email, or loading a web page for example.
+- [ ] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
+- [ ] Required functionality was present by the 5:00pm Friday deadline.
+- [ ] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
+
+#### Wk. 1
 - [x] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc. activities.
 - [x] Build these activities out with designs, UI, and functionality as much as possible.
 - [x] Validate form inputs. Use toasts and hide/show to communicate statuses to your user, as well as DialogFragments.

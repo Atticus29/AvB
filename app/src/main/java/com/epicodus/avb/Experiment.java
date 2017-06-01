@@ -2,10 +2,6 @@ package com.epicodus.avb;
 
 import java.util.ArrayList;
 
-/**
- * Created by mf on 5/26/17.
- */
-
 public class Experiment {
     public static ArrayList<Experiment> allExperiments = new ArrayList<>();
     private String name;
