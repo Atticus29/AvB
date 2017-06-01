@@ -2,13 +2,24 @@ package com.epicodus.avb.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.avb.R;
+import com.twitter.sdk.android.core.DefaultLogger;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.tweetcomposer.BuildConfig;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,7 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTitle.setTypeface(spaceAge);
         mAboutButton.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
-
+        TwitterConfig config = new TwitterConfig.Builder(this)
+                .logger(new DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(new TwitterAuthConfig("CONSUMER_KEY", "CONSUMER_SECRET"))
+                .debug(true)
+                .build();
+        Twitter.initialize(config);
     }
 
     @Override

@@ -35,12 +35,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.ui.AllExperimentsActivity" />
         </activity>
-
         <activity android:name=".ui.AllExperimentsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.ui.MainActivity" />
         </activity>
+        <activity android:name=".ui.TwitterActivity"></activity>
     </application>
 
 </manifest>
