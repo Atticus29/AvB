@@ -15,42 +15,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Treatment1"
-            android:textColor="@color/primary_light"/>
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/reportSuccessButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report a successful trial"
-            android:background="@color/colorAccent"/>
+            />
 
         <Button
             android:id="@+id/reportFailureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report a failed trial"
-            android:background="@color/colorAccent"/>
+            />
 
         <TextView
             android:id="@+id/treatment2Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Treatment2"
-            android:textColor="@color/primary_light"/>
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/reportSuccessButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report a successful trial"
-            android:background="@color/colorAccent"/>
+            />
 
         <Button
             android:id="@+id/reportFailureButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report a failed trial"
-            android:background="@color/colorAccent"/>
+            />
 
     </LinearLayout>
 

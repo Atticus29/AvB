@@ -16,7 +16,8 @@
             android:id="@+id/experimentName"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Experiment Name">
+            android:text="Experiment Name"
+            android:textColor="@color/colorAccent">
         </TextView>
 
         <TextView
