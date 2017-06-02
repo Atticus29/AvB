@@ -48,6 +48,8 @@ public class TwitterActivity extends AppCompatActivity {
 
             @Override
             public void failure(TwitterException exception) {
+                String test = getResources().getString(0);
+                Log.d("test", test);
                 Toast.makeText(TwitterActivity.this, "We're terribly sorryt about this, but the attempt to log in failed", Toast.LENGTH_SHORT).show();
             }
         });

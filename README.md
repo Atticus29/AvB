@@ -21,7 +21,7 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size).Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
 
 ## User stories
-- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
+- [ ] As a user, I'd like to see tweet with the #AvB hashtag.
 - [x] As a user, I'd like to be able to create a new experiment.
 - [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
 - [ ] As a user, I'd like to be able to add a successful trial to a treatment.
@@ -30,6 +30,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [x] As a user, I'd like to be able to see all of my created experiments.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
+- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
 
 ## Planning
 
