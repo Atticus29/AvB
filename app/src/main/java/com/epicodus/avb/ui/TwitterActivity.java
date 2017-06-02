@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.epicodus.avb.R;
 import com.twitter.sdk.android.core.Callback;
@@ -41,12 +42,13 @@ public class TwitterActivity extends AppCompatActivity {
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
+
                 // Do something with result, which provides a TwitterSession for making API calls
             }
 
             @Override
             public void failure(TwitterException exception) {
-                // Do something on failure
+                Toast.makeText(TwitterActivity.this, "We're terribly sorryt about this, but the attempt to log in failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
