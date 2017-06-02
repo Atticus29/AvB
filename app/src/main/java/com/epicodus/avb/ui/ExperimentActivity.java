@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,10 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.epicodus.avb.R;
-import com.epicodus.avb.adapters.SingleTreatmentAdapter;
+import com.epicodus.avb.adapters.TreatmentRecylerViewListAdapter;
+import com.epicodus.avb.models.Experiment;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,7 +23,7 @@ import butterknife.ButterKnife;
 public class ExperimentActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.singleExperimentText) TextView mSingleExperimentText;
     @Bind(R.id.viewAllButton) Button mViewAllButton;
-    @Bind(R.id.treatmentGrid) GridView mTreatmentGrid;
+    @Bind(R.id.treatmentRecyclerView) RecyclerView treatmentRecyclerView;
     @Bind(R.id.tweetResultsButton) Button mTweetResultsButton;
 
     @Override
@@ -39,7 +43,8 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
         mTweetResultsButton.setOnClickListener(this);
-        mTreatmentGrid.setAdapter(new SingleTreatmentAdapter(this, treatments));
+        ArrayList<Experiment> experiments = Experiment.allExperiments;
+        treatmentRecyclerView.setAdapter(new TreatmentRecylerViewListAdapter(this, treatments));
     }
 
     @Override

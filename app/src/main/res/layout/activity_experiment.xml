@@ -27,8 +27,8 @@
         android:layout_marginEnd="8dp" />
 
 
-    <GridView
-        android:id="@+id/treatmentGrid"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/treatmentRecyclerView"
         android:layout_width="274dp"
         android:layout_height="295dp"
         android:layout_marginBottom="8dp"

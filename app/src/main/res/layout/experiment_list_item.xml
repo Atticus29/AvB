@@ -10,34 +10,50 @@
         android:background="@color/colorPrimaryDark"
         >
 
+        <TextView
+            android:id="@+id/treatmentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treatment1"
+            android:textColor="@color/primary_light"/>
+
+        <Button
+            android:id="@+id/reportSuccessButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report a successful trial"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/reportFailureButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report a failed trial"
+            android:background="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/treatment2Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treatment2"
+            android:textColor="@color/primary_light"/>
+
+        <Button
+            android:id="@+id/reportSuccessButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report a successful trial"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/reportFailureButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report a failed trial"
+            android:background="@color/colorAccent"/>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/treatmentName"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:text="TextViewasfasdfasdfasdfasdfasdf" />
 
-    <Button
-        android:id="@+id/reportSuccessButton"
-        android:layout_width="192dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/treatmentName"
-        android:layout_alignLeft="@+id/treatmentName"
-        android:layout_marginLeft="5dp"
-        android:text="Report a successful trial" />
-
-    <Button
-        android:id="@+id/reportFailureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/reportSuccessButton"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/reportSuccessButton"
-        android:text="Report a failed trial" />
 
 </LinearLayout>
