@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 public class AllExperimentsActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.createButton) Button mCreateButton;
     @Bind(R.id.recyclerView) RecyclerView recyclerView;
+    private BriefExperimentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         ButterKnife.bind(this);
         ArrayList<Experiment> experiments = Experiment.allExperiments;
         mCreateButton.setOnClickListener(this);
-        TreatmentRecylerViewListAdapter adapter = new TreatmentRecylerViewListAdapter(this, experiments);
+        adapter = new BriefExperimentAdapter(this, experiments);
         recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(AllExperimentsActivity.this);
         recyclerView.setLayoutManager(layoutManager);
