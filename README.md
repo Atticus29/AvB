@@ -37,7 +37,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 ### Master Checklist
 
 #### Wk. 2
-- [ ] Implement OkHttp to retrieve data from a backend.
+- [x] Implement OkHttp to retrieve data from a backend.
 - [ ] Create a data model to store the data.
 - [x] Display a list of information using a RecyclerView, OR use fragments and a PagerAdapter to swipe through views. (You are also welcome to do both.)
 - [ ] Incorporate at least one implicit intent; Sending a message or an email, or loading a web page for example.

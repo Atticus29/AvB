@@ -2,10 +2,6 @@ package com.epicodus.avb.models;
 
 import java.util.ArrayList;
 
-/**
- * Created by Guest on 6/2/17.
- */
-
 public class TwitterStatus {
     private String timeCreated;
     private String text;
@@ -25,6 +21,10 @@ public class TwitterStatus {
     }
 
     public ArrayList<String> getHashTags() {
-        return hashTags;
+        ArrayList<String> hashTagsWithOctothorps = new ArrayList<>();
+        for(int i = 0; i<hashTags.size(); i++){
+            hashTagsWithOctothorps.add("#" + hashTags.get(i));
+        }
+        return hashTagsWithOctothorps;
     }
 }
