@@ -44,25 +44,20 @@ public class TweetDisplayActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try{
-                    String jsonData = response.body().string();
-                    Log.d(TAG, jsonData);
-                    twitterStatuses = twitterService.processResults(response);
-                    TweetDisplayActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter = new TweetAdapter(getApplicationContext(), twitterStatuses);
-                            tweetRecyclerView.setAdapter(adapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TweetDisplayActivity.this);
-                            tweetRecyclerView.setLayoutManager(layoutManager);
-                            tweetRecyclerView.setHasFixedSize(true);
-                        }
-                    });
+            public void onResponse(Call call, Response response){
+                twitterStatuses = twitterService.processResults(response);
+                TweetDisplayActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter = new TweetAdapter(getApplicationContext(), twitterStatuses);
+                        tweetRecyclerView.setAdapter(adapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TweetDisplayActivity.this);
+                        tweetRecyclerView.setLayoutManager(layoutManager);
+                        tweetRecyclerView.setHasFixedSize(true);
+                    }
+                });
 
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
+
             }
         });
     }

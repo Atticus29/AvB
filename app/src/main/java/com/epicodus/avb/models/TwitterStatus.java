@@ -25,6 +25,6 @@ public class TwitterStatus {
         for(int i = 0; i<hashTags.size(); i++){
             hashTagsWithOctothorps += ("#" + hashTags.get(i) + ", ");
         }
-        return hashTagsWithOctothorps;
+        return hashTagsWithOctothorps.substring(0, hashTagsWithOctothorps.length()-2);
     }
 }
