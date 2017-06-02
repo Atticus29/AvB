@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        >
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/treatmentName"
+        android:layout_width="253dp"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextViewasfasdfasdfasdfasdfasdf" />
+
+    <Button
+        android:id="@+id/reportSuccessButton"
+        android:layout_width="192dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/treatmentName"
+        android:layout_alignLeft="@+id/treatmentName"
+        android:layout_marginLeft="5dp"
+        android:text="Report a successful trial" />
+
+    <Button
+        android:id="@+id/reportFailureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/reportSuccessButton"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/reportSuccessButton"
+        android:text="Report a failed trial" />
+
+</LinearLayout>

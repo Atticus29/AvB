@@ -32,6 +32,8 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'TWITTER_CONSUMER_KEY', TWITTER_CONSUMER_KEY
         it.buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', TWITTER_CONSUMER_SECRET
+        it.buildConfigField 'String', 'TWITTER_ACCESS_TOKEN', TWITTER_ACCESS_TOKEN
+        it.buildConfigField 'String', 'TWITTER_TOKEN_SECRET', TWITTER_TOKEN_SECRET
     }
 }
 
@@ -53,6 +55,18 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:+'
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
