@@ -39,11 +39,11 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 #### Wk. 2
 - [ ] Implement OkHttp to retrieve data from a backend.
 - [ ] Create a data model to store the data.
-- [ ] Display a list of information using a RecyclerView, OR use fragments and a PagerAdapter to swipe through views. (You are also welcome to do both.)
+- [x] Display a list of information using a RecyclerView, OR use fragments and a PagerAdapter to swipe through views. (You are also welcome to do both.)
 - [ ] Incorporate at least one implicit intent; Sending a message or an email, or loading a web page for example.
-- [ ] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
-- [ ] Required functionality was present by the 5:00pm Friday deadline.
-- [ ] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
+- [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
+- [x] Required functionality was present by the 5:00pm Friday deadline.
+- [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 
 #### Wk. 1
 - [x] Create an app with at least, bare minimum, 3 activities that the user can navigate to. Don't neglect about, bio, contact etc. activities.
