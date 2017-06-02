@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.avb.ui.TweetDisplayActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:id="@+id/tweetRecyclerView"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" />
+
 </android.support.constraint.ConstraintLayout>

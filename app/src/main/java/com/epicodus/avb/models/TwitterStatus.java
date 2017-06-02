@@ -20,10 +20,10 @@ public class TwitterStatus {
         return text;
     }
 
-    public ArrayList<String> getHashTags() {
-        ArrayList<String> hashTagsWithOctothorps = new ArrayList<>();
+    public String getHashTags() {
+        String hashTagsWithOctothorps = new String();
         for(int i = 0; i<hashTags.size(); i++){
-            hashTagsWithOctothorps.add("#" + hashTags.get(i));
+            hashTagsWithOctothorps += ("#" + hashTags.get(i) + ", ");
         }
         return hashTagsWithOctothorps;
     }

@@ -2,15 +2,20 @@ package com.epicodus.avb.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.epicodus.avb.R;
+import com.epicodus.avb.adapters.TweetAdapter;
 import com.epicodus.avb.models.TwitterStatus;
 import com.epicodus.avb.services.TwitterService;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -18,11 +23,15 @@ import okhttp3.Response;
 public class TweetDisplayActivity extends AppCompatActivity {
     public static final String TAG = TweetDisplayActivity.class.getSimpleName();
     public ArrayList<TwitterStatus> twitterStatuses = new ArrayList<>();
+    @Bind(R.id.tweetRecyclerView) RecyclerView tweetRecyclerView;
+
+    private TweetAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_display);
+        ButterKnife.bind(this);
         getTweets();
     }
 
@@ -38,22 +47,16 @@ public class TweetDisplayActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try{
                     String jsonData = response.body().string();
-//                    Log.d(TAG, jsonData);
+                    Log.d(TAG, jsonData);
                     twitterStatuses = twitterService.processResults(response);
                     TweetDisplayActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TwitterStatus[] statuses = new TwitterStatus[twitterStatuses.size()];
-                            for(int i = 0; i<statuses.length; i++){
-                                statuses[i] = twitterStatuses.get(i);
-                                Log.d(TAG, "time"+statuses[i].getTimeCreated());
-                                Log.d(TAG, "text"+statuses[i].getText());
-                                ArrayList<String> hashTags = statuses[i].getHashTags();
-                                for(int j = 0; j<hashTags.size(); j++){
-                                    Log.d(TAG, "hashTags"+hashTags.get(j));
-                                }
-
-                            }
+                            adapter = new TweetAdapter(getApplicationContext(), twitterStatuses);
+                            tweetRecyclerView.setAdapter(adapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TweetDisplayActivity.this);
+                            tweetRecyclerView.setLayoutManager(layoutManager);
+                            tweetRecyclerView.setHasFixedSize(true);
                         }
                     });
 

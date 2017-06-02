@@ -66,7 +66,7 @@ public class TwitterService {
                     JSONArray hashTagsJSON = statusJSON.getJSONObject("entities").getJSONArray("hashtags");
                     for (int j = 0; j < hashTagsJSON.length(); j++) {
                         JSONObject hashTagObj = hashTagsJSON.getJSONObject(j);
-                        hashTags.add(hashTagObj.getString("text"));
+                        hashTags.add(hashTagObj.optString("text", "No hashtags for this status available"));
                     }
                     TwitterStatus currentStatus = new TwitterStatus(time, text, hashTags);
                     statuses.add(currentStatus);
@@ -75,7 +75,8 @@ public class TwitterService {
 
         }catch (IOException e) {
             e.printStackTrace();
-        } catch (JSONException e){
+        }
+        catch (JSONException e){
             e.printStackTrace();
         }
         return statuses;
