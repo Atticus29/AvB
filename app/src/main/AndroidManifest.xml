@@ -40,7 +40,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.TwitterActivity"></activity>
+        <activity android:name=".ui.TwitterActivity" />
+        <activity android:name=".ui.TweetDisplayActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.ui.MainActivity"
+                />
+        </activity>
     </application>
 
 </manifest>

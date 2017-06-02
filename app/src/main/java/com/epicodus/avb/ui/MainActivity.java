@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.appTitleText) TextView mTitle;
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.loginButton) Button mLoginButton;
+    @Bind(R.id.tweets) Button mTweetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTitle.setTypeface(spaceAge);
         mAboutButton.setOnClickListener(this);
         mLoginButton.setOnClickListener(this);
+        mTweetButton.setOnClickListener(this);
         TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
                 .twitterAuthConfig(new TwitterAuthConfig("CONSUMER_KEY", "CONSUMER_SECRET"))
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         } else if(v == mLoginButton){
             Intent intent = new Intent(MainActivity.this, AllExperimentsActivity.class);
+            startActivity(intent);
+        } else if(v == mTweetButton){
+            Intent intent = new Intent(MainActivity.this, TweetDisplayActivity.class);
             startActivity(intent);
         }
 

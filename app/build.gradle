@@ -29,7 +29,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildTypes.each{
+    buildTypes.each {
         it.buildConfigField 'String', 'TWITTER_CONSUMER_KEY', TWITTER_CONSUMER_KEY
         it.buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', TWITTER_CONSUMER_SECRET
     }
@@ -40,6 +40,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -49,10 +50,9 @@ dependencies {
     compile 'com.twitter.sdk.android:twitter-core:3.0.0'
     compile 'com.twitter.sdk.android:tweet-ui:3.0.0'
     compile 'com.twitter.sdk.android:tweet-composer:3.0.0'
-    compile 'com.twitter.sdk.android:twitter-mopub:3.0.0'
-    testCompile 'junit:junit:4.12'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+    testCompile 'junit:junit:4.12'
 }
 
 apply plugin: 'com.google.gms.google-services'
