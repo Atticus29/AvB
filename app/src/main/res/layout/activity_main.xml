@@ -70,7 +70,7 @@
         android:id="@+id/tweets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="See tweeted experiments"
+        android:text="View tweeted experiments"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
