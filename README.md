@@ -38,7 +38,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 #### Wk. 2
 - [x] Implement OkHttp to retrieve data from a backend.
-- [ ] Create a data model to store the data.
+- [x] Create a data model to store the data.
 - [x] Display a list of information using a RecyclerView, OR use fragments and a PagerAdapter to swipe through views. (You are also welcome to do both.)
 - [ ] Incorporate at least one implicit intent; Sending a message or an email, or loading a web page for example.
 - [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
