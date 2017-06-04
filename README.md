@@ -20,17 +20,20 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 
 AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size).Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
 
+## Known issues
+* The email implicit intent worked on the Epicodus machine, but not on my home laptop's emulator. You may have success if you log in to an email client on the emulator before running the app.
+
 ## User stories
-- [ ] As a user, I'd like to see tweet with the #AvB hashtag.
+- [x] As a user, I'd like to see tweets with the #AvB hashtag.
 - [x] As a user, I'd like to be able to create a new experiment.
 - [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
-- [ ] As a user, I'd like to be able to add a successful trial to a treatment.
-- [ ] As a user, I'd like to be able to add a failed trial to a treatment.
 - [x] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
 - [x] As a user, I'd like to be able to see all of my created experiments.
+- [ ] As a user, I'd like to be able to add a successful trial to a treatment.
+- [ ] As a user, I'd like to be able to add a failed trial to a treatment.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
-- [ ] As a user, I'd like to tweet results of my experiments (maybe with #AvB hashtag?).
+- [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
 
 ## Planning
 
@@ -88,6 +91,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] DetailedExperimentAdapter (for listing experiment object names/timestamps)
 
 ### API
+- [x] Twitter (to fetch tweets with ABTest hashtag)
 - [ ] Twitter (to Tweet results of completed experiments)
 
 ## Specs/
