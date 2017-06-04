@@ -2,6 +2,7 @@ package com.epicodus.avb.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
 
     @Override
     public int getItemCount() {
+        Log.d("first tweet", tweets.get(0).getText());
+        Log.d("last tweet", tweets.get(14).getText());
         return tweets.size();
     }
 
