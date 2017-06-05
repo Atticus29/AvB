@@ -22,6 +22,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 ## Known issues
 * The email implicit intent worked on the Epicodus machine, but not on my home laptop's emulator. You may have success if you log in to an email client on the emulator before running the app.
+* Log in to Twitter button is currently broken
 
 ## User stories
 - [x] As a user, I'd like to see tweets with the #AvB hashtag.
