@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.epicodus.avb.Constants;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,7 +50,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
 
                     //Eventually, it would be idea to figure out how to pass an entire object through the intent. Perhaps this will be resolved when the data is persisted as JSON
                     Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
-                    Experiment.allExperiments.add(newExperiment);
+                    DatabaseReference experimentRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EXPERIMENTS);
+                    experimentRef.push().setValue(newExperiment);
                     intent.putExtra("name", newExperiment.getName());
                     intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
                     intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());

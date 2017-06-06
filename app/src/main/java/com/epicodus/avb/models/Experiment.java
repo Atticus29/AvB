@@ -3,7 +3,6 @@ package com.epicodus.avb.models;
 import java.util.ArrayList;
 
 public class Experiment {
-    public static ArrayList<Experiment> allExperiments = new ArrayList<>();
     private String name;
     private String treatmentOneName;
     private String treatmentTwoName;
@@ -25,6 +24,8 @@ public class Experiment {
         this.treatmentTwoSucesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
     }
+
+    public Experiment(){}
 
     public String getName() {
         return name;

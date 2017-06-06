@@ -29,9 +29,8 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_experiments);
         ButterKnife.bind(this);
-        ArrayList<Experiment> experiments = Experiment.allExperiments;
         mCreateButton.setOnClickListener(this);
-        adapter = new BriefExperimentAdapter(this, experiments);
+        adapter = new BriefExperimentAdapter(this);
         recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(AllExperimentsActivity.this);
         recyclerView.setLayoutManager(layoutManager);

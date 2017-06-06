@@ -21,11 +21,9 @@ import butterknife.ButterKnife;
 
 public class BriefExperimentAdapter extends RecyclerView.Adapter<BriefExperimentAdapter.BriefExperimentViewHolder> {
     private Context mContext;
-    private ArrayList<Experiment> experiments;
 
-    public BriefExperimentAdapter (Context context, ArrayList<Experiment> experiments){
+    public BriefExperimentAdapter (Context context){
         mContext = context;
-        this.experiments = experiments;
     }
 
     @Override
@@ -42,7 +40,7 @@ public class BriefExperimentAdapter extends RecyclerView.Adapter<BriefExperiment
 
     @Override
     public int getItemCount() {
-        return experiments.size();
+        return 0;
     }
 
     public class BriefExperimentViewHolder extends RecyclerView.ViewHolder{
