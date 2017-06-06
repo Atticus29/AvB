@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.avb.ui.ExperimentActivity">
+    tools:context="com.epicodus.avb.ui.ExperimentActivity"
+    android:background="@color/divider">
 
 
     <TextView
@@ -29,7 +30,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/treatmentRecyclerView"
-        android:layout_width="274dp"
+        android:layout_width="match_parent"
         android:layout_height="295dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"

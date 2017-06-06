@@ -39,7 +39,6 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         ButterKnife.bind(this);
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
-        Intent intent = getIntent();
         String experimentName = currentExperiment.getName();
         String treatmentOneName = currentExperiment.getTreatmentOneName();
         String treatmentTwoName = currentExperiment.getTreatmentTwoName();

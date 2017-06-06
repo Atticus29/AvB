@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
         >
 
         <TextView
@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Treatment1"
-            android:textColor="@color/colorAccent"/>
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/reportSuccessButton"
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report a failed trial"
+            android:layout_marginBottom="8dp"
             />
 
         <TextView
@@ -36,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Treatment2"
-            android:textColor="@color/colorAccent"/>
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/reportSuccessButton2"
