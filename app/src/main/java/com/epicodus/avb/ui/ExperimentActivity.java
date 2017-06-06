@@ -16,6 +16,8 @@ import com.epicodus.avb.R;
 import com.epicodus.avb.adapters.TreatmentRecylerViewListAdapter;
 import com.epicodus.avb.models.Experiment;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -27,6 +29,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.treatmentRecyclerView) RecyclerView treatmentRecyclerView;
     @Bind(R.id.tweetResultsButton) Button mTweetResultsButton;
 
+    private Experiment currentExperiment;
     private TreatmentRecylerViewListAdapter adapter;
 
     @Override
@@ -34,12 +37,12 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
+        currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
-
         Intent intent = getIntent();
-        String experimentName = intent.getStringExtra("name");
-        String treatmentOneName = intent.getStringExtra("treatmentOneName");
-        String treatmentTwoName = intent.getStringExtra("treatmentTwoName");
+        String experimentName = currentExperiment.getName();
+        String treatmentOneName = currentExperiment.getTreatmentOneName();
+        String treatmentTwoName = currentExperiment.getTreatmentTwoName();
         String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
         String output = String.format("Experiment: %s", experimentName);
         mSingleExperimentText.setTypeface(spaceAge);

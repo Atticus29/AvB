@@ -10,6 +10,7 @@ import com.epicodus.avb.Constants;
 import com.epicodus.avb.R;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.ui.AllExperimentsActivity;
+import com.epicodus.avb.ui.ExperimentActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,9 +51,9 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
                     experiments.add(snapshot.getValue(Experiment.class));
                 }
                 int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, AllExperimentsActivity.class);
-                intent.putExtra("position", itemPosition+"");
-                intent.putExtra("experiments", Parcels.wrap(experiments));
+                Intent intent = new Intent(mContext, ExperimentActivity.class);
+                intent.putExtra("position", itemPosition);
+                intent.putExtra("currentExperiment", Parcels.wrap(experiments.get(itemPosition)));
                 mContext.startActivity(intent);
             }
 
