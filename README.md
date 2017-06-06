@@ -40,6 +40,12 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 ### Master Checklist
 
+#### Wk. 3
+- [x] Add db entries
+- [x] View db entries
+- [ ] Pass entire experiment as parcelable to experiment detail activity
+- [ ] Display number of
+
 #### Wk. 2
 - [x] Implement OkHttp to retrieve data from a backend.
 - [x] Create a data model to store the data.
@@ -93,6 +99,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 
 ### API
 - [x] Twitter (to fetch tweets with ABTest hashtag)
+- [ ] Twitter (to log in to Twitter)
 - [ ] Twitter (to Tweet results of completed experiments)
 
 ## Specs/
@@ -110,9 +117,11 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 * Click run in the top option bar (looks like a, "play" icon)
 
 ### Future Functionality
-- [ ] Add DB persistence
+- [x] Add DB persistence
 - [ ] Statistics actually performed
-- [ ] Add twitter API
+- [x] Add tweet view API call
+- [ ] Add twitter login API call
+- [ ] Add tweet API call
 - [ ] Add user authentication
 
 # License
