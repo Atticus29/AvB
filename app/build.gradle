@@ -56,6 +56,9 @@ dependencies {
     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.firebaseui:firebase-ui-database:0.4.1'
+    compile 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
 }
 
 configurations.all {

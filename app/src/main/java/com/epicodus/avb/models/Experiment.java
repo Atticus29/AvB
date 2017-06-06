@@ -1,8 +1,12 @@
 package com.epicodus.avb.models;
 
+import org.parceler.Parcel;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Experiment {
+@Parcel
+public class Experiment implements Serializable {
     private String name;
     private String treatmentOneName;
     private String treatmentTwoName;

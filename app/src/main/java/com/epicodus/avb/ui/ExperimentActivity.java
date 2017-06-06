@@ -46,7 +46,6 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
         mTweetResultsButton.setOnClickListener(this);
-        ArrayList<Experiment> experiments = Experiment.allExperiments;
         adapter = new TreatmentRecylerViewListAdapter(this, treatments);
         treatmentRecyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ExperimentActivity.this);
