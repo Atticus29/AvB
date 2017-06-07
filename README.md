@@ -43,8 +43,16 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 #### Wk. 3
 - [x] Add db entries
 - [x] View db entries
-- [ ] Pass entire experiment as parcelable to experiment detail activity
-- [ ] Display number of
+- [x] Pass entire experiment as parcelable to experiment detail activity
+- [ ] Display number of trials remaining
+- [ ] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
+- [x] Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
+- [ ] Add disclaimer somewhere about bias and good experimental design
+- [x] Employ the Firebase-RecyclerAdapter to display from your database.
+- [ ] Use SharedPreferences to save an important piece of data in your app.
+- [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
+- [x] Required functionality was present by the 5:00pm Friday deadline.
+Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 
 #### Wk. 2
 - [x] Implement OkHttp to retrieve data from a backend.

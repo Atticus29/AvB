@@ -11,15 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.MainActivity"></activity>
         <activity android:name=".ui.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -44,8 +36,24 @@
         <activity android:name=".ui.TweetDisplayActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.avb.ui.MainActivity"
-                />
+                android:value="com.epicodus.avb.ui.MainActivity" />
+        </activity>
+        <activity android:name=".ui.CreateAccountActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.ui.LandingScreenActivity" />
+        </activity>
+        <activity android:name=".ui.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.avb.ui.LandingScreenActivity" />
+        </activity>
+        <activity android:name=".ui.LandingScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

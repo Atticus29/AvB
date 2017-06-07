@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.epicodus.avb.ui.LoginActivity"
+    android:background="@color/secondary_text">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/abtesting"
+        android:scaleType="centerCrop"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="@color/tw__solid_white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="34dp"
+        android:id="@+id/textView2"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="376dp"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.077"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp">
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:hint="Email"
+            android:backgroundTint="@color/divider"
+            android:inputType="textEmailAddress"
+            android:nextFocusDown="@+id/passwordEditText"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/primary_text"
+            android:textSize="20sp"
+            android:alpha="0.9"/>
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:backgroundTint="@color/divider"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:nextFocusDown="@+id/passwordEditText"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/primary_text"
+            android:textSize="20sp"
+            android:alpha="0.9"/>
+
+
+        <Button
+            android:id="@+id/passwordLoginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_button_yellow"
+            android:padding="10dp"
+            android:text="Log in"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"
+            android:alpha="0.9">
+            </Button>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

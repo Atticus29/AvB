@@ -11,6 +11,8 @@ import com.epicodus.avb.R;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.ui.AllExperimentsActivity;
 import com.epicodus.avb.ui.ExperimentActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +45,11 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
     @Override
     public void onClick(View view){
         final ArrayList<Experiment> experiments = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EXPERIMENTS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
+                .child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
