@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.epicodus.avb.Constants;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,6 +45,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
             String treatmentOne = mTreatmentOneName.getText().toString();
             String treatmentTwo = mTreatmentTwoName.getText().toString();
             String effectSizeInput = mEffectSizeInput.getText().toString();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             if(!name.matches("") && !treatmentOne.matches("") && !treatmentTwo.matches("") && !effectSizeInput.matches("")){
                 double effectSizeAsNumber = parseDouble(effectSizeInput);
                 if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0){
@@ -50,7 +54,9 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
 
                     //Eventually, it would be idea to figure out how to pass an entire object through the intent. Perhaps this will be resolved when the data is persisted as JSON
                     Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
-                    DatabaseReference experimentRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EXPERIMENTS);
+                    DatabaseReference experimentRef = FirebaseDatabase.getInstance()
+                            .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
+                            .child(uid);
                     experimentRef.push().setValue(newExperiment);
                     intent.putExtra("name", newExperiment.getName());
                     intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());

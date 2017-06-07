@@ -16,6 +16,7 @@ public class Experiment implements Serializable {
     private int treatmentTwoFailures;
     private double desiredEffectSize;
     private int minimumTrialsRequired;
+    private String pushId;
 
     public Experiment(String name, String treatmentOneName, String treatmentTwoName, double desiredEffectSize){
         this.name = name;
@@ -65,5 +66,11 @@ public class Experiment implements Serializable {
 
     public int getMinimumTrialsRequired() {
         return minimumTrialsRequired;
+    }
+
+    public String getPushId(){ return pushId; }
+
+    public void setPushId(String pushId){
+        this.pushId = pushId;
     }
 }
