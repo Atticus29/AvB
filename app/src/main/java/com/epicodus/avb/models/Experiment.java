@@ -6,17 +6,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @Parcel
-public class Experiment implements Serializable {
-    private String name;
-    private String treatmentOneName;
-    private String treatmentTwoName;
-    private int treatmentOneSucesses;
-    private int treatmentTwoSucesses;
-    private int treatmentOneFailures;
-    private int treatmentTwoFailures;
-    private double desiredEffectSize;
-    private int minimumTrialsRequired;
-    private String pushId;
+public class Experiment {
+    public String name;
+    public String treatmentOneName;
+    public String treatmentTwoName;
+    public int treatmentOneSucesses;
+    public int treatmentTwoSucesses;
+    public int treatmentOneFailures;
+    public int treatmentTwoFailures;
+    public double desiredEffectSize;
+    public int minimumTrialsRequired;
+    public String pushId;
+
+    public Experiment(){}
 
     public Experiment(String name, String treatmentOneName, String treatmentTwoName, double desiredEffectSize){
         this.name = name;
@@ -29,8 +31,6 @@ public class Experiment implements Serializable {
         this.treatmentTwoSucesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
     }
-
-    public Experiment(){}
 
     public String getName() {
         return name;

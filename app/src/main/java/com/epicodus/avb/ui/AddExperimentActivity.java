@@ -1,6 +1,7 @@
 package com.epicodus.avb.ui;
 
 import android.content.Intent;
+import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.parceler.Parcels;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -61,9 +64,7 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                     String pushId = pushRef.getKey();
                     newExperiment.setPushId(pushId);
                     pushRef.setValue(newExperiment);
-//                    intent.putExtra("name", newExperiment.getName());
-//                    intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
-//                    intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());
+                    intent.putExtra("currentExperiment", Parcels.wrap(newExperiment));
 
                     startActivity(intent);
                 } else{

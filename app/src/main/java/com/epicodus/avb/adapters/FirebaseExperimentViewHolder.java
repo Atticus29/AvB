@@ -43,7 +43,9 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
     @Override
     public void onClick(View view){
         final ArrayList<Experiment> experiments = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EXPERIMENTS);
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
+                .child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
