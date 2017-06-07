@@ -26,8 +26,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="356dp"
+        android:layout_width="match_parent"
         android:layout_height="376dp"
+        android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp"
@@ -55,7 +56,7 @@
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
+            android:textColorHint="@color/primary_text"
             android:textSize="20sp" />
 
         <EditText
@@ -69,7 +70,7 @@
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/colorDivider"
+            android:textColorHint="@color/primary_text"
             android:textSize="20sp" />
 
 
@@ -81,7 +82,8 @@
             android:background="@color/colorAccent"
             android:padding="10dp"
             android:text="Log in"
-            android:textColor="@color/colorTextIcons" />
+            android:textSize="18sp"
+            android:textColor="@color/primary_text" />
 
         <TextView
             android:id="@+id/registerTextView"
