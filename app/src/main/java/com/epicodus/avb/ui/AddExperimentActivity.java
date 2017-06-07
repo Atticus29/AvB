@@ -57,10 +57,13 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                     DatabaseReference experimentRef = FirebaseDatabase.getInstance()
                             .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
                             .child(uid);
-                    experimentRef.push().setValue(newExperiment);
-                    intent.putExtra("name", newExperiment.getName());
-                    intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
-                    intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());
+                    DatabaseReference pushRef = experimentRef.push();
+                    String pushId = pushRef.getKey();
+                    newExperiment.setPushId(pushId);
+                    pushRef.setValue(newExperiment);
+//                    intent.putExtra("name", newExperiment.getName());
+//                    intent.putExtra("treatmentOneName", newExperiment.getTreatmentOneName());
+//                    intent.putExtra("treatmentTwoName", newExperiment.getTreatmentTwoName());
 
                     startActivity(intent);
                 } else{

@@ -12,6 +12,8 @@ import com.epicodus.avb.adapters.FirebaseExperimentViewHolder;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
@@ -28,9 +30,15 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_experiments);
         ButterKnife.bind(this);
-        mExperimentReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EXPERIMENTS);
-        setupFirebaseAdapter();
         mCreateButton.setOnClickListener(this);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mExperimentReference = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
+                .child(uid);
+        setupFirebaseAdapter();
+
     }
 
     private void setupFirebaseAdapter(){
