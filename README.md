@@ -45,7 +45,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [x] View db entries
 - [x] Pass entire experiment as parcelable to experiment detail activity
 - [ ] Display number of trials remaining
-- [ ] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
+- [x] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
 - [x] Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
 - [ ] Add disclaimer somewhere about bias and good experimental design
 - [x] Employ the Firebase-RecyclerAdapter to display from your database.
