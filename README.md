@@ -47,6 +47,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] Display number of trials remaining
 - [ ] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
 - [x] Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
+- [ ] Add disclaimer somewhere about bias and good experimental design
 - [x] Employ the Firebase-RecyclerAdapter to display from your database.
 - [ ] Use SharedPreferences to save an important piece of data in your app.
 - [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.

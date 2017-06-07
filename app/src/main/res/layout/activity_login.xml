@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/rounded_button"
+            android:background="@drawable/rounded_button_yellow"
             android:padding="10dp"
             android:text="Log in"
             android:textSize="18sp"

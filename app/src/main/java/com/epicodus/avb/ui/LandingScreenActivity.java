@@ -2,6 +2,7 @@ package com.epicodus.avb.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,8 +26,8 @@ import butterknife.ButterKnife;
 public class LandingScreenActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LoginActivity.class.getSimpleName();
 
-//    @Bind(R.id.appTitleText) TextView mTitleText;
-//    @Bind(R.id.subtitleText) TextView mSubtitleText;
+    @Bind(R.id.appTitleTextLanding) TextView mTitleTextLanding;
+//    @Bind(R.id.subtitleTextLanding) TextView mSubtitleTextLanding;
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
     @Bind(R.id.signUpButton) Button mSignUpButton;
 
@@ -38,6 +39,8 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);
         ButterKnife.bind(this);
+        Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
+        mTitleTextLanding.setTypeface(spaceAge);
         mSignUpButton.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
         createAuthProgressDialog();
@@ -83,11 +86,9 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
         if (view == mSignUpButton) {
             Intent intent = new Intent(LandingScreenActivity.this, CreateAccountActivity.class);
             startActivity(intent);
-            finish();
         } else if (view == mPasswordLoginButton) {
             Intent intent = new Intent(LandingScreenActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();
         }
     }
 }

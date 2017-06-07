@@ -7,13 +7,22 @@
     tools:context="com.epicodus.avb.ui.CreateAccountActivity"
     android:background="@color/secondary_text">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/abtesting"
+        android:scaleType="centerCrop"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Account"
+        android:textSize="30dp"
         android:gravity="center_horizontal"
-        android:textColor="@color/primary_text"
-        android:textSize="23sp"
+        android:textColor="@color/tw__solid_white"
         android:textStyle="bold"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true"
@@ -23,7 +32,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -54,7 +64,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.7"/>
 
         <EditText
             android:id="@+id/emailEditText"
@@ -69,7 +80,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.7"/>
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -84,7 +96,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.7"/>
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
@@ -99,7 +112,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.7"/>
 
 
         <Button
@@ -107,10 +121,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/rounded_button_yellow"
             android:padding="10dp"
             android:text="Sign up"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/primary_text"
+            />
 
         <TextView
             android:id="@+id/loginTextView"
@@ -118,8 +133,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Already have an account? Log in here!"
-            android:textColor="@color/primary_text"
+            android:text="Already have an account?\n Log in here!"
+            android:gravity="center_horizontal"
+            android:textColor="@color/tw__solid_white"
             android:textSize="15sp"
             android:textStyle="bold" />
 
