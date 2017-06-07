@@ -25,14 +25,10 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LoginActivity.class.getSimpleName();
 
-    @Bind(R.id.passwordLoginButton)
-    Button mPasswordLoginButton;
-    @Bind(R.id.emailEditText)
-    EditText mEmailEditText;
-    @Bind(R.id.passwordEditText)
-    EditText mPasswordEditText;
-    @Bind(R.id.registerTextView)
-    TextView mRegisterTextView;
+    @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
+    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
+    @Bind(R.id.signUpButton) Button mSignUpButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -42,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mRegisterTextView.setOnClickListener(this);
+        mSignUpButton.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
         createAuthProgressDialog();
         mAuth = FirebaseAuth.getInstance();
@@ -84,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (view == mRegisterTextView) {
+        if (view == mSignUpButton) {
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();

@@ -70,7 +70,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.9"/>
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -84,7 +85,8 @@
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/primary_text"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0.9"/>
 
 
         <Button
@@ -92,22 +94,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/rounded_button"
             android:padding="10dp"
             android:text="Log in"
             android:textSize="18sp"
-            android:textColor="@color/primary_text" />
+            android:textColor="@color/primary_text"
+            android:alpha="0.9">
+            </Button>
 
-        <TextView
-            android:id="@+id/registerTextView"
+        <Button
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Don't have an account? Sign up here!"
+            android:text="Sign up"
             android:textColor="@color/primary_text"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/rounded_button"
+            android:alpha="0.9"
+            />
 
     </LinearLayout>
 
