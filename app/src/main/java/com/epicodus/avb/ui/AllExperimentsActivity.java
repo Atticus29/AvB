@@ -41,7 +41,7 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String mostRecentExperimentName = mSharedPreferences.getString(Constants.PREFERENCES_MOST_RECENT_EXPERIMENT, "No recent experiments on this device");
-        greetingAndExperiment.setText(mostRecentExperimentName);
+        greetingAndExperiment.setText("Most-recently created experiment:\n" + mostRecentExperimentName);
         Log.d("test", "onCreate:" + mostRecentExperimentName);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
