@@ -1,12 +1,17 @@
 package com.epicodus.avb.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.epicodus.avb.Constants;
 import com.epicodus.avb.adapters.FirebaseExperimentViewHolder;
 import com.epicodus.avb.models.Experiment;
@@ -22,8 +27,10 @@ import butterknife.ButterKnife;
 public class AllExperimentsActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.createButton) Button mCreateButton;
     @Bind(R.id.recyclerView) RecyclerView recyclerView;
+    @Bind(R.id.greetingAndExperiment) TextView greetingAndExperiment;
     private DatabaseReference mExperimentReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,10 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         ButterKnife.bind(this);
         mCreateButton.setOnClickListener(this);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String mostRecentExperimentName = mSharedPreferences.getString(Constants.PREFERENCES_MOST_RECENT_EXPERIMENT, "No recent experiments on this device");
+        greetingAndExperiment.setText(mostRecentExperimentName);
+        Log.d("test", "onCreate:" + mostRecentExperimentName);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         mExperimentReference = FirebaseDatabase.getInstance()

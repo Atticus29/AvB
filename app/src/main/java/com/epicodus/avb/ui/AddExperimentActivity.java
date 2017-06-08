@@ -1,7 +1,9 @@
 package com.epicodus.avb.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Parcel;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +33,10 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.treatmentTwoName) EditText mTreatmentTwoName;
     @Bind(R.id.effectSizeInput) EditText mEffectSizeInput;
     @Bind(R.id.submitButton) Button mSubmitButton;
+
     public static final String TAG =  AddExperimentActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mSharedPreferencesEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_add_experiment);
         ButterKnife.bind(this);
         mSubmitButton.setOnClickListener(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferencesEditor = mSharedPreferences.edit();
     }
 
     @Override
@@ -54,8 +61,7 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                 double effectSizeAsNumber = parseDouble(effectSizeInput);
                 if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0){
                     Intent intent = new Intent(AddExperimentActivity.this, ExperimentActivity.class);
-
-                    //Eventually, it would be idea to figure out how to pass an entire object through the intent. Perhaps this will be resolved when the data is persisted as JSON
+                    mSharedPreferencesEditor.putString(Constants.PREFERENCES_MOST_RECENT_EXPERIMENT, name).apply();
                     Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
                     DatabaseReference experimentRef = FirebaseDatabase.getInstance()
                             .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
