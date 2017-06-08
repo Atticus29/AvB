@@ -35,6 +35,10 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
 - [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
+- [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments and get hints as I type.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments by voice.
 
 ## Planning
 
@@ -47,6 +51,7 @@ AvB leverages (Bayesian?) statistical model x to perform significance tests and 
 - [ ] Display number of trials remaining
 - [ ] Resize the background image
 - [ ] Customize format of item in overflow menu
+- [ ] Remove app bar from landing page
 - [x] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
 - [x] Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
 - [ ] Add disclaimer somewhere about bias and good experimental design
