@@ -39,6 +39,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
+        mTweetResultsButton.setVisibility(View.GONE);
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
         String experimentName = currentExperiment.getName();
