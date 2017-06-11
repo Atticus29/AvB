@@ -73,4 +73,27 @@ public class Experiment {
     public void setPushId(String pushId){
         this.pushId = pushId;
     }
+
+    public double calculateChiSquared(int treatmentOneSucesses, int treatmentOneFailures, int treatmentTwoSucesses, int treatmentTwoFailures){
+        int total_samples = treatmentOneSucesses + treatmentOneFailures + treatmentTwoSucesses + treatmentTwoFailures;
+        int total_successes = treatmentOneSucesses + treatmentTwoSucesses;
+        int total_treatmentOne_trials = treatmentOneSucesses + treatmentOneFailures;
+        int total_failures = treatmentOneFailures + treatmentTwoFailures;
+        int total_treatmentTwo_trials = treatmentTwoSucesses + treatmentTwoFailures;
+
+        double expTreatmentOneSuccess = (total_successes*total_treatmentOne_trials)/total_samples;
+        double expTreatmentOneFailures = (total_successes*total_treatmentTwo_trials)/total_samples;
+        double expTreatmentTwoSucesses = (total_failures*total_treatmentOne_trials)/total_samples;
+        double expTreatmentTwoFailures = (total_failures * total_treatmentTwo_trials)/total_samples;
+
+
+        double chiSqSubunitOne = Math.pow(treatmentOneSucesses-expTreatmentOneSuccess ,2)/expTreatmentOneSuccess;
+        double chiSqSubunitSubTwo = Math.pow(treatmentTwoSucesses-expTreatmentTwoSucesses ,2)/expTreatmentTwoSucesses;
+        double chiSqSubunitFour = Math.pow(treatmentOneFailures-expTreatmentOneFailures ,2)/expTreatmentOneFailures;
+        double chiSqSubunitThree = Math.pow(treatmentTwoFailures-expTreatmentTwoFailures ,2)/expTreatmentTwoFailures;
+
+        double chiSq = chiSqSubunitOne + chiSqSubunitSubTwo + chiSqSubunitThree + chiSqSubunitFour;
+
+        return chiSq;
+    }
 }

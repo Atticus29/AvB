@@ -18,7 +18,9 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 * If I make students sign the honor code before taking the exam, will the rate of cheating decrease?
 * Does treating my honeybees for _Varroa_ mites really make a difference?
 
-AvB leverages (Bayesian?) statistical model x to perform significance tests and statistical model y to perform power tests (for an approximation of how many trials are necessary to detect statistical significance for a given effect size).Once you have run the required number of trials, the app will report which treatment (A or B) performed better (if there was a difference).
+AvB leverages 2x2 contingency chi-squared tests to assess statistical significance between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).
+
+Please note that this approach is risky!! Since there is no real way to do a so-called "blind" experiment on yourself, be very wary of biases in your experimentation. If you want something to be true and aren't resolved to be maniacally objective about your approach, you'll somehow find a way to confirm your own bias with statistical results (and you may not even be conscious of it)! If you need to find a friend with no horses in the race to run the tests on your behalf, so be it!
 
 ## Known issues
 * The email implicit intent worked on the Epicodus machine, but not on my home laptop's emulator. You may have success if you log in to an email client on the emulator before running the app.
