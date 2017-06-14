@@ -17,6 +17,7 @@ public class Experiment {
     public double desiredEffectSize;
     public int minimumTrialsRequired;
     public String pushId;
+    public String imageURL;
 
     public Experiment(){}
 
@@ -30,6 +31,8 @@ public class Experiment {
         this.treatmentTwoFailures = 0;
         this.treatmentTwoSucesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
+        this.imageURL = "http://mobileadvertisingwatch.com/wp-content/uploads/2016/02/OpenXcell-Creates-Innovation-Labs-to-Experiment-with-New-App-Technologies.jpg";
+//        this.imageURL = "./res/drawable/experimentimage.jpg";
     }
 
     public String getName() {
@@ -94,5 +97,13 @@ public class Experiment {
         double chiSq = chiSqSubunitOne + chiSqSubunitSubTwo + chiSqSubunitThree + chiSqSubunitFour;
 
         return chiSq;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 }

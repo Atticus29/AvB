@@ -46,17 +46,28 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 
 ### Master Checklist
 
-#### Wk. 3
-- [x] Add db entries
-- [x] View db entries
-- [x] Pass entire experiment as parcelable to experiment detail activity
+#### Wk. 4
+- [ ] Includes at least two gesture listeners OR two animations, OR utilize the camera within your application.
+- [ ] Implements at least one alternate resource.
+- [ ] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
+- [ ] Required functionality was present by the 5:00pm Friday deadline.
+- [ ] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
+- [ ] Project is in a presentable, portfolio-quality state.
+Optional: Is published to Google Play.
 - [ ] Display number of trials remaining
 - [ ] Resize the background image
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
+- [ ] Add app icon
+- [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
+
+#### Wk. 3
+- [x] Add db entries
+- [x] View db entries
+- [x] Pass entire experiment as parcelable to experiment detail activity
 - [x] Implement Firebase user authentication. Be sure to create your own SignIn and SignUp screens. Do not copy them from from MyRestaurants.
 - [x] Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
-- [ ] Add disclaimer somewhere about bias and good experimental design
+- [x] Add disclaimer somewhere about bias and good experimental design
 - [x] Employ the Firebase-RecyclerAdapter to display from your database.
 - [x] Use SharedPreferences to save an important piece of data in your app.
 - [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
