@@ -65,7 +65,6 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         String imageUrl = currentExperiment.getImageURL();
         dropImageIntoView(imageUrl, (Context) this);
-
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
         String experimentName = currentExperiment.getName();
         String treatmentOneName = currentExperiment.getTreatmentOneName();
@@ -89,9 +88,10 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                 Bitmap imageBitmap = decodeFromFirebaseBase64(imageURL);
                 imageView.setImageBitmap(imageBitmap);
             } catch(IOException e){
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         } else{
+            Log.d("contains http", imageURL);
             Picasso.with(context)
                     .load(imageURL)
                     .resize(MAX_WIDTH, MAX_HEIGHT)

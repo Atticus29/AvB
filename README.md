@@ -58,6 +58,8 @@ Optional: Is published to Google Play.
 - [ ] Resize the background image
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
+- [ ] Add app icon
+- [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
 
 #### Wk. 3
 - [x] Add db entries
