@@ -47,15 +47,17 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 ### Master Checklist
 
 #### Wk. 4
-- [ ] Includes at least two gesture listeners OR two animations, OR utilize the camera within your application.
+- [ ] Includes at least two gesture listeners OR two animations
+- [x] Utilize the camera within your application.
 - [ ] Implements at least one alternate resource.
-- [ ] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
-- [ ] Required functionality was present by the 5:00pm Friday deadline.
-- [ ] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
-- [ ] Project is in a presentable, portfolio-quality state.
+- [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
+- [x] Required functionality was present by the 5:00pm Friday deadline.
+- [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
+- [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
 - [ ] Display number of trials remaining
 - [ ] Resize the background image
+- [ ] Improve/remove the listview in experiment detail
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
 - [ ] Add app icon
