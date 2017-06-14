@@ -31,6 +31,8 @@ public class Experiment {
         this.treatmentTwoFailures = 0;
         this.treatmentTwoSucesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
+        this.imageURL = "https://unsplash.com/search/test-tube?photo=pgfWIStWIfs";
+//        this.imageURL = "./res/drawable/experimentimage.jpg";
     }
 
     public String getName() {
@@ -99,5 +101,9 @@ public class Experiment {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 }

@@ -1,8 +1,10 @@
 package com.epicodus.avb.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -28,10 +30,12 @@ import com.epicodus.avb.models.Experiment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -45,6 +49,8 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.experimentImage) ImageView imageView;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
 
     private Experiment currentExperiment;
     private TreatmentRecylerViewListAdapter adapter;
@@ -57,6 +63,9 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
 //        setHasOptionsMenu(true);
         mTweetResultsButton.setVisibility(View.GONE);
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
+        String imageUrl = currentExperiment.getImageURL();
+        dropImageIntoView(imageUrl, (Context) this);
+
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
         String experimentName = currentExperiment.getName();
         String treatmentOneName = currentExperiment.getTreatmentOneName();
@@ -72,6 +81,28 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ExperimentActivity.this);
         treatmentRecyclerView.setLayoutManager(layoutManager);
         treatmentRecyclerView.setHasFixedSize(true);
+    }
+
+    public void dropImageIntoView(String imageURL, Context context){
+        if(!imageURL.contains("http")){
+            try{
+                Bitmap imageBitmap = decodeFromFirebaseBase64(imageURL);
+                imageView.setImageBitmap(imageBitmap);
+            } catch(IOException e){
+                e.printStackTrace();
+            }
+        } else{
+            Picasso.with(context)
+                    .load(imageURL)
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(imageView);
+        }
+    }
+
+    public static Bitmap decodeFromFirebaseBase64(String image) throws IOException {
+        byte[] decodedByteArray = android.util.Base64.decode(image, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
     }
 
     @Override
@@ -131,7 +162,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child(currentExperiment.getPushId())
                 .child("imageURL");
-        Log.d("encode", currentExperiment.getPushId());
+        currentExperiment.setImageURL(imageEncoded);
         ref.setValue(imageEncoded);
     }
 }
