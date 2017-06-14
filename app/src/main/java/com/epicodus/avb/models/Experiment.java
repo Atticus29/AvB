@@ -17,6 +17,7 @@ public class Experiment {
     public double desiredEffectSize;
     public int minimumTrialsRequired;
     public String pushId;
+    public String imageURL;
 
     public Experiment(){}
 
@@ -94,5 +95,9 @@ public class Experiment {
         double chiSq = chiSqSubunitOne + chiSqSubunitSubTwo + chiSqSubunitThree + chiSqSubunitFour;
 
         return chiSq;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
