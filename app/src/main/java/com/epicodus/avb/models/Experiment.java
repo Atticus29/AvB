@@ -47,7 +47,7 @@ public class Experiment {
         return treatmentTwoName;
     }
 
-    public int gettreatmentOneSuccesses() {
+    public int getTreatmentOneSuccesses() {
         return treatmentOneSuccesses;
     }
 
