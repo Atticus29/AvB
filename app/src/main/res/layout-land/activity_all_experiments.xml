@@ -19,14 +19,14 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="500dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/createButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +43,7 @@
 
         <FrameLayout
             android:id="@+id/experimentDetailContainer"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="6">
 
