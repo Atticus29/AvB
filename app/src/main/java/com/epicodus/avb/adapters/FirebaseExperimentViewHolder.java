@@ -2,6 +2,7 @@ package com.epicodus.avb.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -27,12 +28,23 @@ import java.util.ArrayList;
 public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     View mView;
     Context mContext;
+    private int orientation;
+
     public FirebaseExperimentViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+        orientation = itemView.getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            createDetailFragment(0);
+        }
     }
+
+    private void createDetailFragment(int position){
+        //LEFT OFF HERE
+    }
+
     public void bindExperiment(Experiment experiment){
         TextView experimentName = (TextView) mView.findViewById(R.id.experimentName);
         TextView treatment1 = (TextView) mView.findViewById(R.id.treatment1);
