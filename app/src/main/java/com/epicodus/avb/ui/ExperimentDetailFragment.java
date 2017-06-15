@@ -3,6 +3,7 @@ package com.epicodus.avb.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,10 +37,10 @@ public class ExperimentDetailFragment extends Fragment {
 
 
     public ExperimentDetailFragment() {
-        // Required empty public constructor
     }
 
     public static ExperimentDetailFragment newInstance(Experiment experiment){
+        Log.d("experiment name is:", experiment.getName());
         ExperimentDetailFragment experimentDetailFragment = new ExperimentDetailFragment();
         Bundle args =  new Bundle();
         args.putParcelable("currentExperiment", Parcels.wrap(experiment));
@@ -50,7 +51,7 @@ public class ExperimentDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-         currentExperiment = Parcels.unwrap(getArguments().getParcelable("currentExperiment"));
+        currentExperiment = Parcels.unwrap(getArguments().getParcelable("currentExperiment"));
     }
 
 
@@ -66,10 +67,10 @@ public class ExperimentDetailFragment extends Fragment {
         experimentNameDetailFragment.setText(currentExperiment.getName());
         treatment1DetailFragment.setText(currentExperiment.getTreatmentOneName());
         treatment2DetailFragment.setText(currentExperiment.getTreatmentTwoName());
-        tx1successesDetailFragment.setText(currentExperiment.getTreatmentOneSuccesses());
-        tx2successesDetailFragment.setText(currentExperiment.getTreatmentTwoSucesses());
-        tx1failuresDetailFragment.setText(currentExperiment.getTreatmentOneFailures());
-        tx2failuresDetailFragment.setText(currentExperiment.getTreatmentTwoFailures());
+        tx1successesDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentOneSuccesses()));
+        tx2successesDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentTwoSuccesses()));
+        tx1failuresDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentOneFailures()));
+        tx2failuresDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentTwoFailures()));
 
         return view;
     }
