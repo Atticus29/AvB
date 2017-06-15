@@ -32,7 +32,8 @@ import java.util.ArrayList;
 public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     View mView;
     Context mContext;
-    private int orientation = itemView.getResources().getConfiguration().orientation;
+    private int orientation;
+            //= itemView.getResources().getConfiguration().orientation;
 
     public FirebaseExperimentViewHolder(View itemView) {
         super(itemView);
@@ -40,10 +41,9 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
         orientation = itemView.getResources().getConfiguration().orientation;
-        prepopulateDetailFragment();
-//        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-//            createDetailFragment(0);
-//        }
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            prepopulateDetailFragment();
+        }
     }
 
     private void createDetailFragment(Experiment currentExperiment){
