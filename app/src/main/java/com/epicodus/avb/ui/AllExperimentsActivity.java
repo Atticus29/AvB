@@ -60,6 +60,7 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         mExperimentReference = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
                 .child(uid);
+        setupFirebaseAdapter();
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
             mExperimentReference.limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -76,8 +77,6 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
             });
 //            Experiment defaultExperiment = mExperimentReference.limitToFirst(1).get;
 
-        } else{
-            setupFirebaseAdapter();
         }
 
     }
