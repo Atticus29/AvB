@@ -11,7 +11,7 @@ public class Experiment {
     public String treatmentOneName;
     public String treatmentTwoName;
     public int treatmentOneSuccesses;
-    public int treatmentTwoSucesses;
+    public int treatmentTwoSuccesses;
     public int treatmentOneFailures;
     public int treatmentTwoFailures;
     public double desiredEffectSize;
@@ -29,7 +29,7 @@ public class Experiment {
         this.treatmentOneFailures = 0;
         this.treatmentOneSuccesses = 0;
         this.treatmentTwoFailures = 0;
-        this.treatmentTwoSucesses = 0;
+        this.treatmentTwoSuccesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
         this.imageURL = "http://mobileadvertisingwatch.com/wp-content/uploads/2016/02/OpenXcell-Creates-Innovation-Labs-to-Experiment-with-New-App-Technologies.jpg";
 //        this.imageURL = "./res/drawable/experimentimage.jpg";
@@ -47,12 +47,12 @@ public class Experiment {
         return treatmentTwoName;
     }
 
-    public int gettreatmentOneSuccesses() {
+    public int getTreatmentOneSuccesses() {
         return treatmentOneSuccesses;
     }
 
-    public int getTreatmentTwoSucesses() {
-        return treatmentTwoSucesses;
+    public int getTreatmentTwoSuccesses() {
+        return treatmentTwoSuccesses;
     }
 
     public int getTreatmentOneFailures() {

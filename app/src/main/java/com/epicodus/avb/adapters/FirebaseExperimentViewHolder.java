@@ -2,7 +2,12 @@ package com.epicodus.avb.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +16,7 @@ import com.epicodus.avb.R;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.ui.AllExperimentsActivity;
 import com.epicodus.avb.ui.ExperimentActivity;
+import com.epicodus.avb.ui.ExperimentDetailFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,12 +33,23 @@ import java.util.ArrayList;
 public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     View mView;
     Context mContext;
+    private int orientation;
+
     public FirebaseExperimentViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+        orientation = itemView.getResources().getConfiguration().orientation;
     }
+
+    private void createDetailFragment(Experiment currentExperiment){
+                ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
+                FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
+                ft.commit();
+    }
+
     public void bindExperiment(Experiment experiment){
         TextView experimentName = (TextView) mView.findViewById(R.id.experimentName);
         TextView treatment1 = (TextView) mView.findViewById(R.id.treatment1);
@@ -57,17 +74,20 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
                     experiments.add(snapshot.getValue(Experiment.class));
                 }
                 int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, ExperimentActivity.class);
-                intent.putExtra("position", itemPosition);
-                intent.putExtra("currentExperiment", Parcels.wrap(experiments.get(itemPosition)));
-                mContext.startActivity(intent);
+                if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+                    Log.d("is landscape", "yes");
+                    createDetailFragment(experiments.get(itemPosition));
+                } else{
+                    Intent intent = new Intent(mContext, ExperimentActivity.class);
+                    intent.putExtra("position", itemPosition);
+                    intent.putExtra("currentExperiment", Parcels.wrap(experiments.get(itemPosition)));
+                    mContext.startActivity(intent);
+                }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
-
 }
