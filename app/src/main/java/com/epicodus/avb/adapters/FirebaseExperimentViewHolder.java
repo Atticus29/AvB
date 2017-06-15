@@ -33,7 +33,6 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
     View mView;
     Context mContext;
     private int orientation;
-            //= itemView.getResources().getConfiguration().orientation;
 
     public FirebaseExperimentViewHolder(View itemView) {
         super(itemView);

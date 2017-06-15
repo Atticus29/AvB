@@ -35,8 +35,6 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.submitButton) Button mSubmitButton;
 
     public static final String TAG =  AddExperimentActivity.class.getSimpleName();
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mSharedPreferencesEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +42,6 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_add_experiment);
         ButterKnife.bind(this);
         mSubmitButton.setOnClickListener(this);
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mSharedPreferencesEditor = mSharedPreferences.edit();
     }
 
     @Override
@@ -61,7 +57,6 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                 double effectSizeAsNumber = parseDouble(effectSizeInput);
                 if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0){
                     Intent intent = new Intent(AddExperimentActivity.this, ExperimentActivity.class);
-//                    mSharedPreferencesEditor.putString(Constants.PREFERENCES_MOST_RECENT_EXPERIMENT, name).apply();
                     Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
                     DatabaseReference experimentRef = FirebaseDatabase.getInstance()
                             .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
@@ -71,12 +66,10 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                     newExperiment.setPushId(pushId);
                     pushRef.setValue(newExperiment);
                     intent.putExtra("currentExperiment", Parcels.wrap(newExperiment));
-
                     startActivity(intent);
                 } else{
                     Toast.makeText(AddExperimentActivity.this, "Effect size must range between 0 and 1.", Toast.LENGTH_SHORT).show();
                 }
-
             } else{
                 Toast.makeText(AddExperimentActivity.this, "Please make sure to fill out all input fields!", Toast.LENGTH_SHORT).show();
             }
