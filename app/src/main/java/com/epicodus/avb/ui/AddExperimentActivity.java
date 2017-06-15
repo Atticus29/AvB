@@ -2,6 +2,7 @@ package com.epicodus.avb.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Parcel;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.epicodus.avb.Constants;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.R;
+import com.epicodus.avb.util.OnExperimentSelectedListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -21,13 +23,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
-public class AddExperimentActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddExperimentActivity extends AppCompatActivity implements View.OnClickListener, OnExperimentSelectedListener {
     @Bind(R.id.nameInput) EditText mNameInput;
     @Bind(R.id.treatmentOneName) EditText mTreatmentOneName;
     @Bind(R.id.treatmentTwoName) EditText mTreatmentTwoName;
@@ -35,6 +39,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.submitButton) Button mSubmitButton;
 
     public static final String TAG =  AddExperimentActivity.class.getSimpleName();
+    private Integer experimentPosition;
+    ArrayList<Experiment> experiments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,37 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_add_experiment);
         ButterKnife.bind(this);
         mSubmitButton.setOnClickListener(this);
+
+        experiments = Parcels.unwrap(getIntent().getParcelableExtra("experiments"));
+        experimentPosition = getIntent().getIntExtra("position", 0);
+
+        if(savedInstanceState != null){
+            if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+                experiments = Parcels.unwrap(savedInstanceState.getParcelable(Constants.FIREBASE_CHILD_EXPERIMENTS));
+                experimentPosition = savedInstanceState.getInt("position");
+                if(experimentPosition != null & experiments != null){
+                    Intent intent = new Intent(this, AllExperimentsActivity.class);
+                    intent.putExtra("position", experimentPosition);
+                    intent.putExtra("experiments", Parcels.wrap(experiments));
+                    startActivity(intent);
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        if(experimentPosition != null && experiments != null){
+            outState.putInt("position", experimentPosition);
+            outState.putParcelable("experiments", Parcels.wrap(experiments));
+        }
+    }
+
+    @Override
+    public void onExperimentSelected(Integer position, ArrayList<Experiment> experiments) {
+        experimentPosition = position;
+        this.experiments = experiments;
     }
 
     @Override

@@ -1,12 +1,14 @@
 package com.epicodus.avb.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,10 +22,8 @@ import org.w3c.dom.Text;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ExperimentDetailFragment extends Fragment {
+
+public class ExperimentDetailFragment extends Fragment{
     @Bind(R.id.experimentNameDetailFragment) TextView experimentNameDetailFragment;
     @Bind(R.id.experimentImageDetailFragment) ImageView experimentImageDetailFragment;
     @Bind(R.id.treatment1DetailFragment) TextView treatment1DetailFragment;

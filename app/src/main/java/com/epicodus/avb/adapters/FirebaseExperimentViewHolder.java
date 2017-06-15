@@ -3,6 +3,7 @@ package com.epicodus.avb.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -40,16 +41,13 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
         orientation = itemView.getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            prepopulateDetailFragment();
-        }
     }
 
     private void createDetailFragment(Experiment currentExperiment){
-        ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
-        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
-        ft.commit();
+                ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
+                FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
+                ft.commit();
     }
 
     public void bindExperiment(Experiment experiment){
@@ -92,31 +90,4 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
             }
         });
     }
-
-    public void prepopulateDetailFragment(){
-        final ArrayList<Experiment> experiments = new ArrayList<>();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
-                .child(uid);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    experiments.add(snapshot.getValue(Experiment.class));
-                }
-                int itemPosition = getLayoutPosition();
-                if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-                    Log.d("is landscape", "yes");
-                    createDetailFragment(experiments.get(itemPosition));
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
 }

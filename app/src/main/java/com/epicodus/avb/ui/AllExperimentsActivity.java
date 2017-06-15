@@ -19,6 +19,7 @@ import com.epicodus.avb.Constants;
 import com.epicodus.avb.adapters.FirebaseExperimentViewHolder;
 import com.epicodus.avb.models.Experiment;
 import com.epicodus.avb.R;
+import com.epicodus.avb.util.OnExperimentSelectedListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,16 +29,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AllExperimentsActivity extends AppCompatActivity implements View.OnClickListener{
+    //, OnExperimentSelectedListener
+
     @Bind(R.id.createButton) Button mCreateButton;
     @Bind(R.id.recyclerView) RecyclerView recyclerView;
     @Bind(R.id.greetingAndExperiment) TextView greetingAndExperiment;
+
     private DatabaseReference mExperimentReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
-//    private SharedPreferences mSharedPreferences;
+
     private int orientation;
     private Experiment defaultExperiment;
 
@@ -46,17 +54,14 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_experiments);
         ButterKnife.bind(this);
+
         orientation = this.getResources().getConfiguration().orientation;
         mCreateButton.setOnClickListener(this);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        String mostRecentExperimentName = mSharedPreferences.getString(Constants.PREFERENCES_MOST_RECENT_EXPERIMENT, "No recent experiments on this device");
-//        greetingAndExperiment.setText("Most-recently created experiment on this device:\n" + mostRecentExperimentName);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         String userName = user.getDisplayName();
         greetingAndExperiment.setText("Welcome, " + userName + "!");
-
         mExperimentReference = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
                 .child(uid);
@@ -72,11 +77,8 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
                 }
             });
-//            Experiment defaultExperiment = mExperimentReference.limitToFirst(1).get;
-
         }
 
     }
@@ -96,6 +98,7 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
     @Override
     protected void onDestroy(){
         super.onDestroy();
+
         mFirebaseAdapter.cleanup();
     }
 
@@ -103,6 +106,7 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
     public void onClick(View v){
         if(v == mCreateButton){
             Intent intent = new Intent(AllExperimentsActivity.this, AddExperimentActivity.class);
+//            intent.putExtra("position", )
             startActivity(intent);
         }
     }

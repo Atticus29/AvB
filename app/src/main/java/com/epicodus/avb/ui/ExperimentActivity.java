@@ -66,7 +66,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
 
         String imageUrl = currentExperiment.getImageURL();
-        dropImageIntoView(imageUrl, (Context) this);
+        dropImageIntoView(imageUrl, this);
 
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
 
