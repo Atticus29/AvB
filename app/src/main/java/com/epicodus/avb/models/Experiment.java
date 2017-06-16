@@ -34,7 +34,6 @@ public class Experiment {
         this.treatmentOneSuccesses = 0;
         this.treatmentTwoFailures = 0;
         this.treatmentTwoSuccesses = 0;
-        this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
         this.imageURL = "http://mobileadvertisingwatch.com/wp-content/uploads/2016/02/OpenXcell-Creates-Innovation-Labs-to-Experiment-with-New-App-Technologies.jpg";
         populateSampleSizeMap();
     }

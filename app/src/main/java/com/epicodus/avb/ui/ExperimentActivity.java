@@ -28,8 +28,12 @@ import com.epicodus.avb.R;
 import com.epicodus.avb.adapters.TreatmentRecylerViewListAdapter;
 import com.epicodus.avb.models.Experiment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -60,8 +64,11 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
+    private DatabaseReference experimentReference;
 
     private Experiment currentExperiment;
+    private Experiment observedExperiment;
+    private ValueEventListener experimentReferenceListener;
 //    private TreatmentRecylerViewListAdapter adapter;
 
 
@@ -69,43 +76,50 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
-
         mTweetResultsButton.setVisibility(View.GONE);
-
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
-        String currentExperimentPushId = currentExperiment.getPushId();
-        Map<Double, Integer> sampleSizeMap = currentExperiment.getSampleSizeMap();
-        Double effectSize = currentExperiment.getDesiredEffectSize();
-        Log.d("effectSize", Double.toString(effectSize));
-        Integer goalSampleSize = sampleSizeMap.get(effectSize);
-        currentExperiment.setMinimumTrialsRequired(goalSampleSize);
-//        Log.d("sample size is", Integer.toString(currentExperiment.getMinimumTrialsRequired()));
+        String experimentPushId = currentExperiment.getPushId();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
-        treatmentName.setText(currentExperiment.getTreatmentOneName());
-        tx1TrailsRemaining.setText("Trials remaining: " + Integer.toString(goalSampleSize - currentExperiment.getTreatmentOneFailures() - currentExperiment.getTreatmentOneSuccesses()));
-        treatment2Name.setText(currentExperiment.getTreatmentTwoName());
-        tx2TrailsRemaining.setText("Trials remaining: " + Integer.toString(goalSampleSize - currentExperiment.getTreatmentTwoSuccesses() - currentExperiment.getTreatmentTwoFailures()));
-
+        experimentReference = FirebaseDatabase.getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_EXPERIMENTS)
+                .child(uid)
+                .child(experimentPushId);
+        experimentReferenceListener = experimentReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    observedExperiment = dataSnapshot.getValue(Experiment.class);
+                    Map<Double, Integer> sampleSizeMap = observedExperiment.getSampleSizeMap();
+                    Double effectSize = observedExperiment.getDesiredEffectSize();
+                    Log.d("effectSize", Double.toString(effectSize));
+                    Integer goalSampleSize = sampleSizeMap.get(effectSize);
+                    observedExperiment.setMinimumTrialsRequired(goalSampleSize);
+                    treatmentName.setText(observedExperiment.getTreatmentOneName());
+                    tx1TrailsRemaining.setText("Trials remaining: " + Integer.toString(observedExperiment.getMinimumTrialsRequired()/2 - observedExperiment.getTreatmentOneFailures() - observedExperiment.getTreatmentOneSuccesses()));
+                    treatment2Name.setText(observedExperiment.getTreatmentTwoName());
+                    tx2TrailsRemaining.setText("Trials remaining: " + Integer.toString(observedExperiment.getMinimumTrialsRequired()/2 - observedExperiment.getTreatmentTwoSuccesses() - observedExperiment.getTreatmentTwoFailures()));
+                    String experimentName = observedExperiment.getName();
+                    String output = String.format("Experiment: %s", experimentName);
+                    mSingleExperimentText.setText(output);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
         String imageUrl = currentExperiment.getImageURL();
         dropImageIntoView(imageUrl, this);
-
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
-
-        String experimentName = currentExperiment.getName();
-//        String treatmentOneName = currentExperiment.getTreatmentOneName();
-//        String treatmentTwoName = currentExperiment.getTreatmentTwoName();
-//        String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
-        String output = String.format("Experiment: %s", experimentName);
         mSingleExperimentText.setTypeface(spaceAge);
-        mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
         mTweetResultsButton.setOnClickListener(this);
+    }
 
-//        adapter = new TreatmentRecylerViewListAdapter(this, treatments);
-//        treatmentRecyclerView.setAdapter(adapter);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ExperimentActivity.this);
-//        treatmentRecyclerView.setLayoutManager(layoutManager);
-//        treatmentRecyclerView.setHasFixedSize(true);
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        experimentReference.removeEventListener(experimentReferenceListener);
     }
 
     public void dropImageIntoView(String imageURL, Context context){

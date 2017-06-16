@@ -58,7 +58,9 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
 - [ ] Statistics actually performed
-- [ ] Display number of trials remaining
+- [ ] Flesh out what the effect size (log of odds) means in layman's terms
+- [x] Display number of trials remaining
+- [ ] Update number of trails remaining dynamically
 - [ ] Update to database when successes or failures are reported
   - [ ] Add to successes or Failures
   - [ ] Observe the minimumTrialsRequired - totalTrialsConducted
