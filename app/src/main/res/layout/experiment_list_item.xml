@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +9,7 @@
 
         <LinearLayout
             android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
@@ -21,6 +18,7 @@
                 android:layout_height="wrap_content"
                 android:text="Treatment1"
                 android:textSize="22sp"
+                android:layout_gravity="center"
                 android:textColor="@color/colorPrimaryDark"/>
 
             <Button
@@ -30,11 +28,13 @@
                 android:drawableStart="@drawable/ic_exposure_plus_1_black_24dp"
                 android:background="@drawable/rounded_button_yellow"
                 android:text="Success"
+                android:layout_gravity="center"
                 />
 
             <Button
                 android:id="@+id/reportFailureButton"
                 android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -47,6 +47,7 @@
 
         <LinearLayout
             android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
@@ -55,11 +56,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Treatment2"
+                android:layout_gravity="center"
                 android:textSize="22sp"
                 android:textColor="@color/colorPrimaryDark"/>
 
             <Button
                 android:id="@+id/reportSuccessButton2"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_exposure_plus_1_black_24dp"
@@ -70,6 +73,7 @@
             <Button
                 android:id="@+id/reportFailureButton2"
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_button_yellow"
@@ -82,7 +86,3 @@
 
 
     </GridLayout>
-
-
-
-</LinearLayout>
