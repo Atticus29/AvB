@@ -18,6 +18,7 @@ public class Experiment {
     public int minimumTrialsRequired;
     public String pushId;
     public String imageURL;
+    public double chiSq;
 
     public Experiment(){}
 
@@ -96,6 +97,7 @@ public class Experiment {
 
         double chiSq = chiSqSubunitOne + chiSqSubunitSubTwo + chiSqSubunitThree + chiSqSubunitFour;
 
+        this.chiSq = chiSq;
         return chiSq;
     }
 

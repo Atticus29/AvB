@@ -18,9 +18,15 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 * If I make students sign the honor code before taking the exam, will the rate of cheating decrease?
 * Does treating my honeybees for _Varroa_ mites really make a difference?
 
-AvB leverages 2x2 contingency chi-squared tests to assess statistical significance between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).
+#### How it works
+AvB leverages 2x2 contingency chi-squared tests to assess statistically significant differences between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).
+P-values (the probability of seeing the data you did by chance - that is, assuming that there is no difference between the treatments in reality) are calculated assuming a Type 1 error rate of 5% (alpha = 0.05).
 
-Please note that this approach is risky!! Since there is no real way to do a so-called "blind" experiment on yourself, be very wary of biases in your experimentation. If you want something to be true and aren't resolved to be maniacally objective about your approach, you'll somehow find a way to confirm your own bias with statistical results (and you may not even be conscious of it)! If you need to find a friend with no horses in the race to run the tests on your behalf, so be it!
+_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1.
+
+Because underlying power tests calculating these sample size estimates are currently out of scope for this app., we made the assumptions described above, and leveraged [G*Power](http://www.gpower.hhu.de/) to pre-populated anticipated sample sizes given user-specified effect sizes.
+
+Please note that this approach is risky!! Since there is no real way to do a so-called "blind" experiment on yourself, be very wary of biases in your experimentation. If you want something to be true and aren't resolved to be maniacally objective about your approach, you'll somehow find a way to confirm your own bias with statistical results (and you may not even be conscious of it)! If you need to find a friend with no horses in the race to run the tests on your behalf, so be it! Or recruit an entire team to report successful and failed trials on behalf of your experiment.
 
 ## Known issues
 * The email implicit intent worked on the Epicodus machine, but not on my home laptop's emulator. You may have success if you log in to an email client on the emulator before running the app.
@@ -148,11 +154,12 @@ Project demonstrates understanding of this week’s concepts. If prompted, you c
 
 ### Future Functionality
 - [x] Add DB persistence
-- [ ] Statistics actually performed
+- [x] Add user authentication
 - [x] Add tweet view API call
+- [ ] Statistics actually performed
 - [ ] Add twitter login API call
 - [ ] Add tweet API call
-- [ ] Add user authentication
+- [ ] Trials suggested in a random order
 
 # License
 
