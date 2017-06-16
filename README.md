@@ -42,27 +42,27 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [ ] As a user, I'd like to be able to add a failed trial to a treatment.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
 - [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
-- [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
-- [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments and get hints as I type.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments by voice.
+
 
 ## Planning
 
 ### Master Checklist
 
 #### Wk. 4
-- [ ] Includes at least two gesture listeners OR two animations
+
 - [x] Utilize the camera within your application.
-- [ ] Implements at least one alternate resource.
+- [x] Implements at least one alternate resource.
 - [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
 - [x] Required functionality was present by the 5:00pm Friday deadline.
 - [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 - [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
+- [ ] Statistics actually performed
 - [ ] Display number of trials remaining
-- [ ] Resize the background image
+- [ ] Update to database when successes or failures are reported
+  - [ ] Add to successes or Failures
+  - [ ] Observe the minimumTrialsRequired - totalTrialsConducted
+- [ ] Resize the A/B background image
 - [ ] Improve/remove the listview in experiment detail
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
@@ -156,10 +156,14 @@ Project demonstrates understanding of this week’s concepts. If prompted, you c
 - [x] Add DB persistence
 - [x] Add user authentication
 - [x] Add tweet view API call
-- [ ] Statistics actually performed
 - [ ] Add twitter login API call
 - [ ] Add tweet API call
 - [ ] Trials suggested in a random order
+- [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
+- [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments and get hints as I type.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments by voice.
 
 # License
 

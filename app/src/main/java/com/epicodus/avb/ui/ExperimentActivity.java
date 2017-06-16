@@ -37,6 +37,7 @@ import org.parceler.Parcels;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,6 +65,11 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         mTweetResultsButton.setVisibility(View.GONE);
 
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
+        Map<Double, Integer> sampleSizeMap = currentExperiment.getSampleSizeMap();
+        Double effectSize = currentExperiment.getDesiredEffectSize();
+        Integer goalSampleSize = sampleSizeMap.get(effectSize);
+        currentExperiment.setMinimumTrialsRequired(goalSampleSize);
+        Log.d("sample size is", Integer.toString(currentExperiment.getMinimumTrialsRequired()));
 
         String imageUrl = currentExperiment.getImageURL();
         dropImageIntoView(imageUrl, this);
@@ -93,7 +99,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                 Bitmap imageBitmap = decodeFromFirebaseBase64(imageURL);
                 imageView.setImageBitmap(imageBitmap);
             } catch(IOException e){
-//                e.printStackTrace();
+                e.printStackTrace();
             }
         } else{
             Log.d("contains http", imageURL);

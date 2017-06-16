@@ -4,6 +4,8 @@ import org.parceler.Parcel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Parcel
 public class Experiment {
@@ -19,6 +21,7 @@ public class Experiment {
     public String pushId;
     public String imageURL;
     public double chiSq;
+    public static Map<Double, Integer> sampleSizeMap = new HashMap<Double, Integer>();
 
     public Experiment(){}
 
@@ -33,7 +36,32 @@ public class Experiment {
         this.treatmentTwoSuccesses = 0;
         this.minimumTrialsRequired = 25; //this is temporary and will be fleshed out with real statistics when time permits
         this.imageURL = "http://mobileadvertisingwatch.com/wp-content/uploads/2016/02/OpenXcell-Creates-Innovation-Labs-to-Experiment-with-New-App-Technologies.jpg";
-//        this.imageURL = "./res/drawable/experimentimage.jpg";
+        populateSampleSizeMap();
+    }
+
+    public void setMinimumTrialsRequired(int minimumTrialsRequired) {
+        if(minimumTrialsRequired %2 == 0){
+            this.minimumTrialsRequired = minimumTrialsRequired;
+        } else{
+            this.minimumTrialsRequired = minimumTrialsRequired + 1;
+        }
+    }
+
+    public void populateSampleSizeMap(){
+        sampleSizeMap.put(0.1, 785);
+        sampleSizeMap.put(0.2, 197);
+        sampleSizeMap.put(0.3, 88);
+        sampleSizeMap.put(0.4, 50);
+        sampleSizeMap.put(0.5, 32);
+        sampleSizeMap.put(0.6, 22);
+        sampleSizeMap.put(0.7, 17);
+        sampleSizeMap.put(0.8, 13);
+        sampleSizeMap.put(0.9, 10);
+        sampleSizeMap.put(1.0, 8);
+    }
+
+    public static Map<Double, Integer> getSampleSizeMap() {
+        return sampleSizeMap;
     }
 
     public String getName() {
