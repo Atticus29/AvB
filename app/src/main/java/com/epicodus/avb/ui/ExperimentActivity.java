@@ -48,6 +48,11 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.treatmentRecyclerView) RecyclerView treatmentRecyclerView;
     @Bind(R.id.tweetResultsButton) Button mTweetResultsButton;
     @Bind(R.id.experimentImage) ImageView imageView;
+    @Bind(R.id.tx1ReportSuccessButton) Button tx1ReportSuccessButton;
+    @Bind(R.id.tx1ReportFailureButton) Button tx1ReportFailureButton;
+    @Bind(R.id.tx2ReportSuccessButton) Button tx2ReportSuccessButton;
+    @Bind(R.id.tx2ReportFailureButton) Button tx2ReportFailureButton;
+
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int MAX_WIDTH = 400;
