@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -45,21 +46,23 @@ import butterknife.ButterKnife;
 public class ExperimentActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.singleExperimentText) TextView mSingleExperimentText;
     @Bind(R.id.viewAllButton) Button mViewAllButton;
-    @Bind(R.id.treatmentRecyclerView) RecyclerView treatmentRecyclerView;
     @Bind(R.id.tweetResultsButton) Button mTweetResultsButton;
     @Bind(R.id.experimentImage) ImageView imageView;
     @Bind(R.id.tx1ReportSuccessButton) Button tx1ReportSuccessButton;
     @Bind(R.id.tx1ReportFailureButton) Button tx1ReportFailureButton;
     @Bind(R.id.tx2ReportSuccessButton) Button tx2ReportSuccessButton;
     @Bind(R.id.tx2ReportFailureButton) Button tx2ReportFailureButton;
-
+    @Bind(R.id.treatmentName) TextView treatmentName;
+    @Bind(R.id.tx1TrailsRemaining) TextView tx1TrailsRemaining;
+    @Bind(R.id.treatment2Name) TextView treatment2Name;
+    @Bind(R.id.tx2TrailsRemaining) TextView tx2TrailsRemaining;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
     private Experiment currentExperiment;
-    private TreatmentRecylerViewListAdapter adapter;
+//    private TreatmentRecylerViewListAdapter adapter;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +73,18 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         mTweetResultsButton.setVisibility(View.GONE);
 
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
+        String currentExperimentPushId = currentExperiment.getPushId();
         Map<Double, Integer> sampleSizeMap = currentExperiment.getSampleSizeMap();
         Double effectSize = currentExperiment.getDesiredEffectSize();
+        Log.d("effectSize", Double.toString(effectSize));
         Integer goalSampleSize = sampleSizeMap.get(effectSize);
         currentExperiment.setMinimumTrialsRequired(goalSampleSize);
-        Log.d("sample size is", Integer.toString(currentExperiment.getMinimumTrialsRequired()));
+//        Log.d("sample size is", Integer.toString(currentExperiment.getMinimumTrialsRequired()));
+
+        treatmentName.setText(currentExperiment.getTreatmentOneName());
+        tx1TrailsRemaining.setText("Trials remaining: " + Integer.toString(goalSampleSize - currentExperiment.getTreatmentOneFailures() - currentExperiment.getTreatmentOneSuccesses()));
+        treatment2Name.setText(currentExperiment.getTreatmentTwoName());
+        tx2TrailsRemaining.setText("Trials remaining: " + Integer.toString(goalSampleSize - currentExperiment.getTreatmentTwoSuccesses() - currentExperiment.getTreatmentTwoFailures()));
 
         String imageUrl = currentExperiment.getImageURL();
         dropImageIntoView(imageUrl, this);
@@ -82,20 +92,20 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         Typeface spaceAge = Typeface.createFromAsset(getAssets(), "fonts/spaceage.ttf");
 
         String experimentName = currentExperiment.getName();
-        String treatmentOneName = currentExperiment.getTreatmentOneName();
-        String treatmentTwoName = currentExperiment.getTreatmentTwoName();
-        String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
+//        String treatmentOneName = currentExperiment.getTreatmentOneName();
+//        String treatmentTwoName = currentExperiment.getTreatmentTwoName();
+//        String[] treatments = new String[] {treatmentOneName, treatmentTwoName};
         String output = String.format("Experiment: %s", experimentName);
         mSingleExperimentText.setTypeface(spaceAge);
         mSingleExperimentText.setText(output);
         mViewAllButton.setOnClickListener(this);
         mTweetResultsButton.setOnClickListener(this);
 
-        adapter = new TreatmentRecylerViewListAdapter(this, treatments);
-        treatmentRecyclerView.setAdapter(adapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ExperimentActivity.this);
-        treatmentRecyclerView.setLayoutManager(layoutManager);
-        treatmentRecyclerView.setHasFixedSize(true);
+//        adapter = new TreatmentRecylerViewListAdapter(this, treatments);
+//        treatmentRecyclerView.setAdapter(adapter);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ExperimentActivity.this);
+//        treatmentRecyclerView.setLayoutManager(layoutManager);
+//        treatmentRecyclerView.setHasFixedSize(true);
     }
 
     public void dropImageIntoView(String imageURL, Context context){

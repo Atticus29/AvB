@@ -106,7 +106,6 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
     public void onClick(View v){
         if(v == mCreateButton){
             Intent intent = new Intent(AllExperimentsActivity.this, AddExperimentActivity.class);
-//            intent.putExtra("position", )
             startActivity(intent);
         }
     }

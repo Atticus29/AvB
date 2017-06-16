@@ -39,6 +39,8 @@ public class Experiment {
         populateSampleSizeMap();
     }
 
+
+
     public void setMinimumTrialsRequired(int minimumTrialsRequired) {
         if(minimumTrialsRequired %2 == 0){
             this.minimumTrialsRequired = minimumTrialsRequired;
@@ -114,12 +116,12 @@ public class Experiment {
         int total_treatmentTwo_trials = treatmentTwoSucesses + treatmentTwoFailures;
 
         double expTreatmentOneSuccesses = ((double)total_successes*total_treatmentOne_trials)/total_samples;
-        double expTreatmentTwoSucesses = ((double)total_successes*total_treatmentTwo_trials)/total_samples;
+        double expTreatmentTwoSuccesses = ((double)total_successes*total_treatmentTwo_trials)/total_samples;
         double expTreatmentOneFailures = ((double)total_failures*total_treatmentOne_trials)/total_samples;
         double expTreatmentTwoFailures = ((double)total_failures * total_treatmentTwo_trials)/total_samples;
 
         double chiSqSubunitOne = Math.pow(treatmentOneSuccesses-expTreatmentOneSuccesses ,2)/expTreatmentOneSuccesses;
-        double chiSqSubunitSubTwo = Math.pow(treatmentTwoSucesses-expTreatmentTwoSucesses ,2)/expTreatmentTwoSucesses;
+        double chiSqSubunitSubTwo = Math.pow(treatmentTwoSucesses-expTreatmentTwoSuccesses ,2)/expTreatmentTwoSuccesses;
         double chiSqSubunitThree = Math.pow(treatmentOneFailures-expTreatmentOneFailures ,2)/expTreatmentOneFailures;
         double chiSqSubunitFour = Math.pow(treatmentTwoFailures-expTreatmentTwoFailures ,2)/expTreatmentTwoFailures;
 
