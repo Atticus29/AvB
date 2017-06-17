@@ -64,6 +64,8 @@ Optional: Is published to Google Play.
 - [x] Display number of trials remaining
 - [x] Statistics actually performed
 - [x] Validate trials (user can't add more results after trial count goes to 0)
+- [x] Improve/remove the listview in experiment detail
+- [ ] Fix side view not populating issue. Transfer lots of the code from Experiment activity over to the fragment (altough in less detail)
 - [ ] Flesh out what the effect size (log of odds) means in layman's terms
 - [ ] Validate effect size input so that it's only tenths.
 - [ ] Mention to the user that they could take a picture (maybe good usecase for SharedPreferences to reveal DialogFragment iff they haven't seen it for this experiment)
@@ -72,7 +74,6 @@ Optional: Is published to Google Play.
   - [ ] Add to successes or Failures
   - [ ] Observe the minimumTrialsRequired - totalTrialsConducted
 - [ ] Resize the A/B background image
-- [x] Improve/remove the listview in experiment detail
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
 - [ ] Add app icon
