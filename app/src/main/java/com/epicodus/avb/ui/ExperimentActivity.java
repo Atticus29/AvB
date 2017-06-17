@@ -69,14 +69,20 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     private Experiment currentExperiment;
     private Experiment observedExperiment;
     private ValueEventListener experimentReferenceListener;
-//    private TreatmentRecylerViewListAdapter adapter;
-
+    private ValueEventListener tx1SuccessListener;
+    private ValueEventListener tx1FailureListener;
+    private ValueEventListener tx2SuccessListener;
+    private ValueEventListener tx2FailureListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
         mTweetResultsButton.setVisibility(View.GONE);
+        tx1ReportSuccessButton.setOnClickListener(this);
+        tx1ReportFailureButton.setOnClickListener(this);
+        tx2ReportSuccessButton.setOnClickListener(this);
+        tx2ReportFailureButton.setOnClickListener(this);
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         String experimentPushId = currentExperiment.getPushId();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -91,11 +97,6 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                     observedExperiment = dataSnapshot.getValue(Experiment.class);
-                    Map<Double, Integer> sampleSizeMap = observedExperiment.getSampleSizeMap();
-                    Double effectSize = observedExperiment.getDesiredEffectSize();
-                    Log.d("effectSize", Double.toString(effectSize));
-                    Integer goalSampleSize = sampleSizeMap.get(effectSize);
-                    observedExperiment.setMinimumTrialsRequired(goalSampleSize);
                     treatmentName.setText(observedExperiment.getTreatmentOneName());
                     tx1TrailsRemaining.setText("Trials remaining: " + Integer.toString(observedExperiment.getMinimumTrialsRequired()/2 - observedExperiment.getTreatmentOneFailures() - observedExperiment.getTreatmentOneSuccesses()));
                     treatment2Name.setText(observedExperiment.getTreatmentTwoName());
@@ -103,6 +104,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                     String experimentName = observedExperiment.getName();
                     String output = String.format("Experiment: %s", experimentName);
                     mSingleExperimentText.setText(output);
+                    experimentReference.setValue(observedExperiment);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -150,10 +152,54 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         if(v == mViewAllButton){
             Intent intent = new Intent(ExperimentActivity.this, AllExperimentsActivity.class);
             startActivity(intent);
-        } else if (v==mTweetResultsButton){
+        } else if (v == mTweetResultsButton){
             Log.d("tweetclicked", "onClick: got here");
             Intent intent = new Intent(ExperimentActivity.this, TwitterActivity.class);
             startActivity(intent);
+        } else if (v == tx1ReportSuccessButton){
+            experimentReference.child("treatmentOneSuccesses").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentCount = dataSnapshot.getValue(Integer.class);
+                    experimentReference.child("treatmentOneSuccesses").setValue(currentCount + 1);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else if (v == tx1ReportFailureButton){
+            experimentReference.child("treatmentOneFailures").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentCount = dataSnapshot.getValue(Integer.class);
+                    experimentReference.child("treatmentOneFailures").setValue(currentCount + 1);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else if (v == tx2ReportSuccessButton){
+            experimentReference.child("treatmentTwoSuccesses").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentCount = dataSnapshot.getValue(Integer.class);
+                    experimentReference.child("treatmentTwoSuccesses").setValue(currentCount + 1);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else if (v == tx2ReportFailureButton){
+            experimentReference.child("treatmentTwoFailures").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentCount = dataSnapshot.getValue(Integer.class);
+                    experimentReference.child("treatmentTwoFailures").setValue(currentCount + 1);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
         }
 
     }

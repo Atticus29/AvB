@@ -5,6 +5,9 @@ A mobile A/B tester for everything
 
 ## By: Mark Fisher
 
+## Known issues
+If too many successes and failures are clicked too rapidly, it seems that there are too many listeners in action.
+
 ## Description
 AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.
 
@@ -38,10 +41,11 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
 - [x] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
 - [x] As a user, I'd like to be able to see all of my created experiments.
-- [ ] As a user, I'd like to be able to add a successful trial to a treatment.
-- [ ] As a user, I'd like to be able to add a failed trial to a treatment.
+- [x] As a user, I'd like to be able to add a successful trial to a treatment.
+- [x] As a user, I'd like to be able to add a failed trial to a treatment.
+- [x] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
-- [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
+- [ ] As a user, I'd like to see the results of the significance test once all of my trials have been completed
 
 
 ## Planning
@@ -59,6 +63,8 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 Optional: Is published to Google Play.
 - [ ] Statistics actually performed
 - [ ] Flesh out what the effect size (log of odds) means in layman's terms
+- [ ] Validate effect size input so that it's only tenths.
+- [ ] Mention to the user that they could take a picture
 - [x] Display number of trials remaining
 - [ ] Update number of trails remaining dynamically
 - [ ] Update to database when successes or failures are reported

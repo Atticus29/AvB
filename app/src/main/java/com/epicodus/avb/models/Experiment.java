@@ -36,6 +36,8 @@ public class Experiment {
         this.treatmentTwoSuccesses = 0;
         this.imageURL = "http://mobileadvertisingwatch.com/wp-content/uploads/2016/02/OpenXcell-Creates-Innovation-Labs-to-Experiment-with-New-App-Technologies.jpg";
         populateSampleSizeMap();
+        Integer goalSampleSize = sampleSizeMap.get(desiredEffectSize);
+        this.setMinimumTrialsRequired(goalSampleSize);
     }
 
 
