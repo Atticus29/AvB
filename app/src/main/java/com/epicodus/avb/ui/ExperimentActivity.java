@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.avb.Constants;
 import com.epicodus.avb.R;
@@ -60,6 +61,7 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.tx1TrailsRemaining) TextView tx1TrailsRemaining;
     @Bind(R.id.treatment2Name) TextView treatment2Name;
     @Bind(R.id.tx2TrailsRemaining) TextView tx2TrailsRemaining;
+    @Bind(R.id.significanceButton) Button significanceButton;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int MAX_WIDTH = 400;
@@ -79,10 +81,12 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_experiment);
         ButterKnife.bind(this);
         mTweetResultsButton.setVisibility(View.GONE);
+        significanceButton.setVisibility(View.GONE);
         tx1ReportSuccessButton.setOnClickListener(this);
         tx1ReportFailureButton.setOnClickListener(this);
         tx2ReportSuccessButton.setOnClickListener(this);
         tx2ReportFailureButton.setOnClickListener(this);
+        significanceButton.setOnClickListener(this);
         currentExperiment = Parcels.unwrap(getIntent().getParcelableExtra("currentExperiment"));
         String experimentPushId = currentExperiment.getPushId();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -105,6 +109,20 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                     String output = String.format("Experiment: %s", experimentName);
                     mSingleExperimentText.setText(output);
                     experimentReference.setValue(observedExperiment);
+                    Integer treatment1RemainingTrials =observedExperiment.getMinimumTrialsRequired()/2 - observedExperiment.getTreatmentOneFailures() - observedExperiment.getTreatmentOneSuccesses();
+                    if(treatment1RemainingTrials < 1) {
+                        tx1ReportSuccessButton.setVisibility(View.GONE);
+                        tx1ReportFailureButton.setVisibility(View.GONE);
+                    }
+                    Integer treatment2RemainingTrials = observedExperiment.getMinimumTrialsRequired()/2 - observedExperiment.getTreatmentTwoSuccesses() - observedExperiment.getTreatmentTwoFailures();
+                    if(treatment2RemainingTrials <1 ){
+                        tx2ReportSuccessButton.setVisibility(View.GONE);
+                        tx2ReportFailureButton.setVisibility(View.GONE);
+                    }
+                    Integer totalRemainingTrials =  treatment1RemainingTrials + treatment2RemainingTrials;
+                    if(totalRemainingTrials == 0){
+                        significanceButton.setVisibility(View.VISIBLE);
+                    }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -198,6 +216,25 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else if (v == significanceButton){
+            experimentReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Experiment observedExp = dataSnapshot.getValue(Experiment.class);
+                    Double chiSq = observedExp.calculateChiSquared(observedExp.getTreatmentOneSuccesses(), observedExp.getTreatmentOneFailures(), observedExp.getTreatmentTwoSuccesses(), observedExp.getTreatmentTwoFailures());
+                    if(chiSq > 3.84){
+                        Toast.makeText(ExperimentActivity.this, "There is a significant difference between your two treatments", Toast.LENGTH_SHORT).show();
+                    } else{
+                        Toast.makeText(ExperimentActivity.this, "No significant difference between your two treatments was detected", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
                 }
             });
         }

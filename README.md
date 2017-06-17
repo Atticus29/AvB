@@ -61,17 +61,18 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 - [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
-- [ ] Statistics actually performed
+- [x] Display number of trials remaining
+- [x] Statistics actually performed
+- [x] Validate trials (user can't add more results after trial count goes to 0)
 - [ ] Flesh out what the effect size (log of odds) means in layman's terms
 - [ ] Validate effect size input so that it's only tenths.
-- [ ] Mention to the user that they could take a picture
-- [x] Display number of trials remaining
+- [ ] Mention to the user that they could take a picture (maybe good usecase for SharedPreferences to reveal DialogFragment iff they haven't seen it for this experiment)
 - [ ] Update number of trails remaining dynamically
 - [ ] Update to database when successes or failures are reported
   - [ ] Add to successes or Failures
   - [ ] Observe the minimumTrialsRequired - totalTrialsConducted
 - [ ] Resize the A/B background image
-- [ ] Improve/remove the listview in experiment detail
+- [x] Improve/remove the listview in experiment detail
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
 - [ ] Add app icon

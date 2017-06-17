@@ -59,9 +59,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllButton"
         android:layout_marginRight="8dp"
-        android:id="@+id/linearLayout2">
+        android:id="@+id/linearLayout2"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/significanceButton">
 
         <TextView
             android:id="@+id/treatmentName"
@@ -117,7 +118,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/experimentImage"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllButton">
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/significanceButton">
 
         <TextView
             android:id="@+id/treatment2Name"
@@ -157,6 +159,19 @@
             android:drawableLeft="@drawable/ic_exposure_plus_1_black_24dp"
             android:text="Failure" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/significanceButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/rounded_button_yellow"
+        android:text="Calculate Significance"
+        app:layout_constraintBottom_toTopOf="@+id/viewAllButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/viewAllButton"
