@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_marginBottom="2dp">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/imageAndTextLinearLayout"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:id="@+id/blurbImage"
+            app:srcCompat="@drawable/experimentimage"
+            android:background="@color/colorPrimary"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/experimentName"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Experiment Name"
+                android:textColor="@color/colorAccent">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:text="Treatment 1"
+                android:id="@+id/treatment1"
+                >
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:text="Treatment 2"
+                android:id="@+id/treatment2"
+                >
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

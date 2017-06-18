@@ -1,6 +1,7 @@
 package com.epicodus.avb.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.avb.R;
-import com.epicodus.avb.models.Experiment;
-import com.mopub.nativeads.MoPubRecyclerViewHolder;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,7 +30,13 @@ public class TreatmentRecylerViewListAdapter extends RecyclerView.Adapter<Treatm
 
     @Override
     public TreatmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.experiment_list_item, parent, false);
+        View view;
+        int orientation = parent.getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.experiment_list_item, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.experiment_longer_blurb_item, parent, false);
+        }
         TreatmentViewHolder viewHolder = new TreatmentViewHolder(view);
         return viewHolder;
     }

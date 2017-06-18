@@ -67,24 +67,38 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
                 .child(uid);
         setupFirebaseAdapter();
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            mExperimentReference.limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                        defaultExperiment = snapshot.getValue(Experiment.class);
-                        createDetailFragment(defaultExperiment);
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            setupLandscapeFirebaseAdapter();
         }
+//            mExperimentReference.limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+//                        defaultExperiment = snapshot.getValue(Experiment.class);
+//                        createDetailFragment(defaultExperiment);
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                }
+//            });
+//        }
 
     }
 
     private void setupFirebaseAdapter(){
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Experiment, FirebaseExperimentViewHolder>(Experiment.class, R.layout.experiment_blurb_item, FirebaseExperimentViewHolder.class, mExperimentReference) {
+            @Override
+            protected void populateViewHolder(FirebaseExperimentViewHolder viewHolder, Experiment model, int position) {
+                viewHolder.bindExperiment(model);
+            }
+        };
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(mFirebaseAdapter);
+    }
+
+    private void setupLandscapeFirebaseAdapter(){
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Experiment, FirebaseExperimentViewHolder>(Experiment.class, R.layout.experiment_longer_blurb_item, FirebaseExperimentViewHolder.class, mExperimentReference) {
             @Override
             protected void populateViewHolder(FirebaseExperimentViewHolder viewHolder, Experiment model, int position) {
                 viewHolder.bindExperiment(model);
@@ -110,10 +124,10 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         }
     }
 
-    private void createDetailFragment(Experiment currentExperiment){
-        ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
-        FragmentTransaction ft = ((FragmentActivity) this).getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
-        ft.commit();
-    }
+//    private void createDetailFragment(Experiment currentExperiment){
+//        ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
+//        FragmentTransaction ft = ((FragmentActivity) this).getSupportFragmentManager().beginTransaction();
+//        ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
+//        ft.commit();
+//    }
 }

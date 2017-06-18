@@ -43,12 +43,12 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
         orientation = itemView.getResources().getConfiguration().orientation;
     }
 
-    private void createDetailFragment(Experiment currentExperiment){
-                ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
-                FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
-                ft.commit();
-    }
+//    private void createDetailFragment(Experiment currentExperiment){
+//                ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
+//                FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
+//                ft.commit();
+//    }
 
     public void bindExperiment(Experiment experiment){
         TextView experimentName = (TextView) mView.findViewById(R.id.experimentName);
@@ -74,15 +74,15 @@ public class FirebaseExperimentViewHolder extends RecyclerView.ViewHolder implem
                     experiments.add(snapshot.getValue(Experiment.class));
                 }
                 int itemPosition = getLayoutPosition();
-                if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-                    Log.d("is landscape", "yes");
-                    createDetailFragment(experiments.get(itemPosition));
-                } else{
+//                if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+//                    Log.d("is landscape", "yes");
+//                    createDetailFragment(experiments.get(itemPosition));
+//                } else{
                     Intent intent = new Intent(mContext, ExperimentActivity.class);
                     intent.putExtra("position", itemPosition);
                     intent.putExtra("currentExperiment", Parcels.wrap(experiments.get(itemPosition)));
                     mContext.startActivity(intent);
-                }
+//                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
