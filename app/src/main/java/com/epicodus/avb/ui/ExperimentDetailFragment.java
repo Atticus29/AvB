@@ -23,15 +23,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ExperimentDetailFragment extends Fragment{
-    @Bind(R.id.experimentNameDetailFragment) TextView experimentNameDetailFragment;
+public class ExperimentDetailFragment extends Fragment implements View.OnClickListener{
+    @Bind(R.id.singleExperimentTextDetailFragment) TextView singleExperimentTextDetailFragment;
     @Bind(R.id.experimentImageDetailFragment) ImageView experimentImageDetailFragment;
-    @Bind(R.id.treatment1DetailFragment) TextView treatment1DetailFragment;
-    @Bind(R.id.treatment2DetailFragment) TextView treatment2DetailFragment;
-    @Bind(R.id.tx1successesDetailFragment) TextView tx1successesDetailFragment;
-    @Bind(R.id.tx2successesDetailFragment) TextView tx2successesDetailFragment;
-    @Bind(R.id.tx1failuresDetailFragment) TextView tx1failuresDetailFragment;
-    @Bind(R.id.tx2failuresDetailFragment) TextView tx2failuresDetailFragment;
+    @Bind(R.id.treatmentNameDetailFragment) TextView treatmentNameDetailFragment;
+    @Bind(R.id.tx1TrailsRemainingDetailFragment) TextView tx1TrailsRemainingDetailFragment;
+    @Bind(R.id.treatment2NameDetailFragment) TextView treatment2NameDetailFragment;
+    @Bind(R.id.tx2TrailsRemainingDetailFragment) TextView tx2TrailsRemainingDetailFragment;
+    @Bind(R.id.significanceButtonDetailFragment) Button significanceButtonDetailFragment;
 
     private Experiment currentExperiment;
 
@@ -60,19 +59,22 @@ public class ExperimentDetailFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_experiment_detail, container,false);
         ButterKnife.bind(this, view);
+        singleExperimentTextDetailFragment.setText(currentExperiment.getName());
         Picasso.with(view.getContext())
-        .load(currentExperiment.getImageURL())
-        .into(experimentImageDetailFragment);
-
-        experimentNameDetailFragment.setText(currentExperiment.getName());
-        treatment1DetailFragment.setText(currentExperiment.getTreatmentOneName());
-        treatment2DetailFragment.setText(currentExperiment.getTreatmentTwoName());
-        tx1successesDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentOneSuccesses()));
-        tx2successesDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentTwoSuccesses()));
-        tx1failuresDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentOneFailures()));
-        tx2failuresDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentTwoFailures()));
-
+                .load(currentExperiment.getImageURL())
+                .into(experimentImageDetailFragment);
+        significanceButtonDetailFragment.setOnClickListener(this);
+        treatmentNameDetailFragment.setText(currentExperiment.getTreatmentOneName());
+        tx1TrailsRemainingDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentOneSuccesses()) + " successes and " +  Integer.toString(currentExperiment.getTreatmentOneFailures())+ " failures");
+        treatment2NameDetailFragment.setText(currentExperiment.getTreatmentTwoName());
+        tx2TrailsRemainingDetailFragment.setText(Integer.toString(currentExperiment.getTreatmentTwoSuccesses()) + " successes and " + Integer.toString(currentExperiment.getTreatmentTwoFailures())+ " failures");
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v == significanceButtonDetailFragment){
+            Log.d("clickedButton", "clicked");
+        }
+    }
 }

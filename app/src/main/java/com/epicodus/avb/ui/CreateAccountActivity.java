@@ -97,17 +97,17 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "onComplete: authentication successful");
-                        } else {
-                            Toast.makeText(CreateAccountActivity.this, "Authentication failed upon create new user", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//        mAuth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            Log.d(TAG, "onComplete: authentication successful");
+//                        } else {
+//                            Toast.makeText(CreateAccountActivity.this, "Authentication failed upon create new user", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
     }
 
     private void createAuthStateListener() {

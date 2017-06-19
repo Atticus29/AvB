@@ -48,7 +48,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.avb.ui.LandingScreenActivity" />
         </activity>
-        <activity android:name=".ui.LandingScreenActivity">
+        <activity android:name=".ui.LandingScreenActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

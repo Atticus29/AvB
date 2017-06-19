@@ -5,6 +5,13 @@ A mobile A/B tester for everything
 
 ## By: Mark Fisher
 
+## Known issues
+* If too many successes and failures are clicked too rapidly, the app gets wonky. Easily resolved by navigating away and returning. Seems that there are too many listeners?
+* Switching back from landscape to portrait changes the width of my recycler view items.
+* When a user logs in, they can see their experiments in portrait orientation but not landscape. But if you click the "view all experiments" button from a single experiment's view, the landscape orientation works correctly.
+
+* The "v1.0.0" branch satisfying the criteria but is generally less cool/fleshed out.
+
 ## Description
 AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.
 
@@ -22,9 +29,20 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 AvB leverages 2x2 contingency chi-squared tests to assess statistically significant differences between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).
 P-values (the probability of seeing the data you did by chance - that is, assuming that there is no difference between the treatments in reality) are calculated assuming a Type 1 error rate of 5% (alpha = 0.05).
 
-_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1.
+**Effect size**
+
+The effect size can be thought of as an association between a treatment and an outcome (e.g. smokers get lung cancer more often than non-smokers get lung cancer). An effect size of 0.1 would be quite subtle and small, whereas an effect size of 0.8 would be a large difference (e.g., a large effect size of smoking on cancer incidence).
+
+**Statistics**
+
+_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1. If you're expecting a larger effect size, this would require much smaller sample sizes. But if you want to notice potentially subtle (but statistically significant) differences between your treatments (A vs. B), then you would need more trials.
 
 Because underlying power tests calculating these sample size estimates are currently out of scope for this app., we made the assumptions described above, and leveraged [G*Power](http://www.gpower.hhu.de/) to pre-populated anticipated sample sizes given user-specified effect sizes.
+
+
+
+
+**Disclaimer**
 
 Please note that this approach is risky!! Since there is no real way to do a so-called "blind" experiment on yourself, be very wary of biases in your experimentation. If you want something to be true and aren't resolved to be maniacally objective about your approach, you'll somehow find a way to confirm your own bias with statistical results (and you may not even be conscious of it)! If you need to find a friend with no horses in the race to run the tests on your behalf, so be it! Or recruit an entire team to report successful and failed trials on behalf of your experiment.
 
@@ -38,36 +56,41 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] As a user, I'd like to be able to add two different treatment categories to the experiment.
 - [x] As a user, I'd like to be able to set an effect size difference/sensitivity level I'd like to notice between my treatments (i.e., do I care if there's statistical significance but treatment 2 is only 0.01% better than treatment 1?).
 - [x] As a user, I'd like to be able to see all of my created experiments.
-- [ ] As a user, I'd like to be able to add a successful trial to a treatment.
-- [ ] As a user, I'd like to be able to add a failed trial to a treatment.
+- [x] As a user, I'd like to be able to add a successful trial to a treatment.
+- [x] As a user, I'd like to be able to add a failed trial to a treatment.
+- [x] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
+- [x] As a user, I'd like to see the results of the significance test once all of my trials have been completed
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
-- [ ] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
-- [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
-- [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments and get hints as I type.
-- [ ] As a user, I'd like to search for a particular experiment in my list of experiments by voice.
 
 ## Planning
 
 ### Master Checklist
 
 #### Wk. 4
-- [ ] Includes at least two gesture listeners OR two animations
+
 - [x] Utilize the camera within your application.
-- [ ] Implements at least one alternate resource.
+- [x] Implements at least one alternate resource.
 - [x] Continue using good coding practices, especially indenting properly, making logically separate Git commits, including a README, and removing commented-out code and logging statements before committing.
 - [x] Required functionality was present by the 5:00pm Friday deadline.
 - [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 - [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
+- [x] Display number of trials remaining
+- [x] Statistics actually performed
+- [x] Validate trials (user can't add more results after trial count goes to 0)
 - [x] Add app icon
-- [ ] Display number of trials remaining
-- [ ] Resize the background image
-- [ ] Improve/remove the listview in experiment detail
-- [ ] Customize format of item in overflow menu
-- [ ] Remove app bar from landing page
+- [x] Improve/remove the listview in experiment detail
+- [x] Remove app bar from landing page
+- [x] Update to database when successes or failures are reported
+  - [x] Add to successes or Failures
+  - [x] Observe the minimumTrialsRequired - totalTrialsConducted
+- [x] Fix side view not populating issue. Transfer lots of the code from Experiment activity over to the fragment (altough in less detail)
+- [x] Flesh out what the effect size means in layman's terms
+- [x] Validate effect size input so that it's only tenths.
+
+- [ ] Mention to the user that they could take a picture (maybe good use case for SharedPreferences to reveal DialogFragment iff they haven't seen it for this experiment)
 - [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
+- [ ] Rebase to get rid of wonky commit messages
 
 #### Wk. 3
 - [x] Add db entries
@@ -156,10 +179,16 @@ Project demonstrates understanding of this week’s concepts. If prompted, you c
 - [x] Add DB persistence
 - [x] Add user authentication
 - [x] Add tweet view API call
-- [ ] Statistics actually performed
 - [ ] Add twitter login API call
 - [ ] Add tweet API call
+- [ ] Update number of trails remaining dynamically
+- [ ] Customize format of item in overflow menu
 - [ ] Trials suggested in a random order
+- [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
+- [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments and get hints as I type.
+- [ ] As a user, I'd like to search for a particular experiment in my list of experiments by voice.
 
 # License
 
