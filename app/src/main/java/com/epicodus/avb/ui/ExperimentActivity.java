@@ -151,7 +151,6 @@ public class ExperimentActivity extends AppCompatActivity implements View.OnClic
                 e.printStackTrace();
             }
         } else{
-            Log.d("contains http", imageURL);
             Picasso.with(context)
                     .load(imageURL)
                     .resize(MAX_WIDTH, MAX_HEIGHT)

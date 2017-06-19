@@ -6,7 +6,11 @@ A mobile A/B tester for everything
 ## By: Mark Fisher
 
 ## Known issues
-If too many successes and failures are clicked too rapidly, the app gets wonky. Easily resolved by navigating away and returning. Seems that there are too many listeners?
+* If too many successes and failures are clicked too rapidly, the app gets wonky. Easily resolved by navigating away and returning. Seems that there are too many listeners?
+* Switching back from landscape to portrait changes the width of my recycler view items.
+* When a user logs in, they can see their experiments in portrait orientation but not landscape. But if you click the "view all experiments" button from a single experiment's view, the landscape orientation works correctly.
+
+* The "v1.0.0" branch satisfying the criteria but is generally less cool/fleshed out.
 
 ## Description
 AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.
