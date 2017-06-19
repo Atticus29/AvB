@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AllExperimentsActivity extends AppCompatActivity implements View.OnClickListener{
-    //, OnExperimentSelectedListener
 
     @Bind(R.id.createButton) Button mCreateButton;
     @Bind(R.id.recyclerView) RecyclerView recyclerView;
@@ -47,9 +47,9 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     private int orientation;
-    private Experiment defaultExperiment;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_experiments);
@@ -60,8 +60,20 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        String userName = user.getDisplayName();
-        greetingAndExperiment.setText("Welcome, " + userName + "!");
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Log.d("got here", user.getDisplayName());
+                    greetingAndExperiment.setText("Welcome, " + user.getDisplayName() + "!");
+                } else{
+                    greetingAndExperiment.setText("");
+                }
+            }
+        };
         mExperimentReference = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_EXPERIMENTS)
                 .child(uid);
@@ -69,20 +81,20 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
             setupLandscapeFirebaseAdapter();
         }
-//            mExperimentReference.limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-//                        defaultExperiment = snapshot.getValue(Experiment.class);
-//                        createDetailFragment(defaultExperiment);
-//                    }
-//                }
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                }
-//            });
-//        }
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     private void setupFirebaseAdapter(){
@@ -123,11 +135,4 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
             startActivity(intent);
         }
     }
-
-//    private void createDetailFragment(Experiment currentExperiment){
-//        ExperimentDetailFragment experimentDetailFragment = ExperimentDetailFragment.newInstance(currentExperiment);
-//        FragmentTransaction ft = ((FragmentActivity) this).getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.experimentDetailContainer, experimentDetailFragment);
-//        ft.commit();
-//    }
 }
