@@ -27,11 +27,11 @@
 
 \n\n Potential use cases are myriad: will my golf score improve if I change my swing by adding this flourish? Should I ignore the haters and bowl grandma-style with two hands between my legs? If I add this card to my Magic deck, will it increase my chances of victory? If I make students sign the honor code before taking the exam, will the rate of cheating decrease?, Does treating my honeybees for Varroa mites really make a difference?, etc., etc.
 \n\nAvB leverages 2x2 contingency chi-squared tests to assess statistically significant differences between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).\n\n
-P-values (the probability of seeing the data you did by chance - that is, assuming that there is no difference between the treatments in reality) are calculated assuming a Type 1 error rate of 5% (alpha = 0.05).\n\n
-The effect size can be thought of as an association between a treatment and an outcome (e.g. smokers get lung cancer more often than non-smokers get lung cancer). An effect size of 0.1 would be quite subtle and small, whereas an effect size of 0.8 would be a large difference (e.g., a large effect size of smoking on cancer incidence).\n\n
-_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1. If you're expecting a larger effect size, this would require much smaller sample sizes. But if you want to notice potentially subtle (but statistically significant) differences between your treatments (A vs. B), then you would need more trials.\n\n
+P-values (the probability of seeing the data you did by chance - that is, assuming that there is no difference between the treatments in reality) are calculated assuming a Type 1 error rate of 5% (alpha = 0.05).\n
+The effect size can be thought of as an association between a treatment and an outcome (e.g. smokers get lung cancer more often than non-smokers get lung cancer). An effect size of 0.1 would be quite subtle and small, whereas an effect size of 0.8 would be a large difference (e.g., a large effect size of smoking on cancer incidence).\n
+A priori sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1. If you're expecting a larger effect size, this would require much smaller sample sizes. But if you want to notice potentially subtle (but statistically significant) differences between your treatments (A vs. B), then you would need more trials.\n\n
 Because underlying power tests calculating these sample size estimates are currently out of scope for this app., we made the assumptions described above, and leveraged G*Power (http://www.gpower.hhu.de/) to pre-populate anticipated sample sizes given user-specified effect sizes.
-\n
+\n\n\n
 "
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/emailTextView"

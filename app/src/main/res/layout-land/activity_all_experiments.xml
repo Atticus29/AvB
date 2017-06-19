@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/greetingAndExperiment"
-        android:text="Testing"
+        android:text="Your Experiments"
         android:textSize="26sp"
         android:gravity="center_horizontal"
         tools:layout_constraintTop_creator="1"

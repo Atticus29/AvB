@@ -67,10 +67,10 @@ public class AllExperimentsActivity extends AppCompatActivity implements View.On
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    Log.d("got here", user.getDisplayName());
-                    greetingAndExperiment.setText("Welcome, " + user.getDisplayName() + "!");
+//                    Log.d("got here", user.getDisplayName());
+//                    greetingAndExperiment.setText("Welcome, " + user.getDisplayName() + "!");
                 } else{
-                    greetingAndExperiment.setText("");
+//                    greetingAndExperiment.setText("");
                 }
             }
         };
