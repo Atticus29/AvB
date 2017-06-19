@@ -6,7 +6,7 @@ A mobile A/B tester for everything
 ## By: Mark Fisher
 
 ## Known issues
-If too many successes and failures are clicked too rapidly, it seems that there are too many listeners in action.
+If too many successes and failures are clicked too rapidly, the app gets wonky. Easily resolved by navigating away and returning. Seems that there are too many listeners?
 
 ## Description
 AvB, short for A vs. B, is an app that allows users to perform A/B tests on all sorts of aspects of their daily lives. The idea is to help you figure out what actions or changes can affect significant change in an area of your life that you're interested in improving.
@@ -25,9 +25,20 @@ The other day, I was at the gym practicing Brazilian Jiu Jitsu, and I wanted to 
 AvB leverages 2x2 contingency chi-squared tests to assess statistically significant differences between the two treatments. It assumes that the treatments are administered randomly (i.e., don't always bowl lefty on Friday nights and always righty on Monday mornings).
 P-values (the probability of seeing the data you did by chance - that is, assuming that there is no difference between the treatments in reality) are calculated assuming a Type 1 error rate of 5% (alpha = 0.05).
 
-_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1.
+**Effect size**
+
+The effect size can be thought of as an association between a treatment and an outcome (e.g. smokers get lung cancer more often than non-smokers get lung cancer). An effect size of 0.1 would be quite subtle and small, whereas an effect size of 0.8 would be a large difference (e.g., a large effect size of smoking on cancer incidence).
+
+**Statistics**
+
+_A priori_ sample size estimates are calculated assuming a desired power of 0.8, degrees of freedom of 1, and effect sizes ranging between 0.1 and 1.0 , incremented by 0.1. If you're expecting a larger effect size, this would require much smaller sample sizes. But if you want to notice potentially subtle (but statistically significant) differences between your treatments (A vs. B), then you would need more trials.
 
 Because underlying power tests calculating these sample size estimates are currently out of scope for this app., we made the assumptions described above, and leveraged [G*Power](http://www.gpower.hhu.de/) to pre-populated anticipated sample sizes given user-specified effect sizes.
+
+
+
+
+**Disclaimer**
 
 Please note that this approach is risky!! Since there is no real way to do a so-called "blind" experiment on yourself, be very wary of biases in your experimentation. If you want something to be true and aren't resolved to be maniacally objective about your approach, you'll somehow find a way to confirm your own bias with statistical results (and you may not even be conscious of it)! If you need to find a friend with no horses in the race to run the tests on your behalf, so be it! Or recruit an entire team to report successful and failed trials on behalf of your experiment.
 
@@ -69,13 +80,12 @@ Optional: Is published to Google Play.
   - [x] Add to successes or Failures
   - [x] Observe the minimumTrialsRequired - totalTrialsConducted
 - [x] Fix side view not populating issue. Transfer lots of the code from Experiment activity over to the fragment (altough in less detail)
-- [ ] Flesh out what the effect size (log of odds) means in layman's terms
-- [ ] Validate effect size input so that it's only tenths.
+- [x] Flesh out what the effect size means in layman's terms
+- [x] Validate effect size input so that it's only tenths.
 - [ ] Mention to the user that they could take a picture (maybe good usecase for SharedPreferences to reveal DialogFragment iff they haven't seen it for this experiment)
-- [ ] Update number of trails remaining dynamically
-- [ ] Customize format of item in overflow menu
 - [ ] Add app icon
 - [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
+- [ ] Rebase to get rid of wonky commit messages
 
 #### Wk. 3
 - [x] Add db entries
@@ -166,6 +176,8 @@ Project demonstrates understanding of this week’s concepts. If prompted, you c
 - [x] Add tweet view API call
 - [ ] Add twitter login API call
 - [ ] Add tweet API call
+- [ ] Update number of trails remaining dynamically
+- [ ] Customize format of item in overflow menu
 - [ ] Trials suggested in a random order
 - [ ] As a user, I'd like to tweet results of my experiments when they reach the trial count threshold (with #AvB hashtag).
 - [ ] As a user, I'd like to click on a tweet from the tweet display and have the app take me to the associated URL.
