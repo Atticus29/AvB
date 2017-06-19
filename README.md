@@ -61,12 +61,12 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] Project demonstrates understanding of this week’s concepts. If prompted, you can discuss your code with an instructor using correct terminology.
 - [x] Project is in a presentable, portfolio-quality state.
 Optional: Is published to Google Play.
+- [x] Add app icon
 - [ ] Display number of trials remaining
 - [ ] Resize the background image
 - [ ] Improve/remove the listview in experiment detail
 - [ ] Customize format of item in overflow menu
 - [ ] Remove app bar from landing page
-- [ ] Add app icon
 - [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
 
 #### Wk. 3
