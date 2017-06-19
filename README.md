@@ -44,9 +44,8 @@ Please note that this approach is risky!! Since there is no real way to do a so-
 - [x] As a user, I'd like to be able to add a successful trial to a treatment.
 - [x] As a user, I'd like to be able to add a failed trial to a treatment.
 - [x] As a user, I'd like to be able to see how many trials remain for treatment 1 and, separately, for treatment 2, before statistically-significant differences (at effect size x) can be detected.
+- [x] As a user, I'd like to see the results of the significance test once all of my trials have been completed
 - [ ] As a user, I'd like to be able to see how many total trials I have run for each treatment.
-- [ ] As a user, I'd like to see the results of the significance test once all of my trials have been completed
-
 
 ## Planning
 
@@ -65,17 +64,16 @@ Optional: Is published to Google Play.
 - [x] Statistics actually performed
 - [x] Validate trials (user can't add more results after trial count goes to 0)
 - [x] Improve/remove the listview in experiment detail
-- [ ] Fix side view not populating issue. Transfer lots of the code from Experiment activity over to the fragment (altough in less detail)
+- [x] Remove app bar from landing page
+- [x] Update to database when successes or failures are reported
+  - [x] Add to successes or Failures
+  - [x] Observe the minimumTrialsRequired - totalTrialsConducted
+- [x] Fix side view not populating issue. Transfer lots of the code from Experiment activity over to the fragment (altough in less detail)
 - [ ] Flesh out what the effect size (log of odds) means in layman's terms
 - [ ] Validate effect size input so that it's only tenths.
 - [ ] Mention to the user that they could take a picture (maybe good usecase for SharedPreferences to reveal DialogFragment iff they haven't seen it for this experiment)
 - [ ] Update number of trails remaining dynamically
-- [ ] Update to database when successes or failures are reported
-  - [ ] Add to successes or Failures
-  - [ ] Observe the minimumTrialsRequired - totalTrialsConducted
-- [ ] Resize the A/B background image
 - [ ] Customize format of item in overflow menu
-- [ ] Remove app bar from landing page
 - [ ] Add app icon
 - [ ] Click the view all experiments button from within an experiment will mess with the display of the experiments in the recyclerView
 
