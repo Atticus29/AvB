@@ -4,5 +4,7 @@
     <item
         android:id="@+id/action_logout"
         android:title="Logout"
-        android:visible="true" />
+        android:visible="true"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        />
 </menu>

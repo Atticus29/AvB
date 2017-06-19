@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.DoubleStream;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -91,8 +93,8 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
             if(!name.matches("") && !treatmentOne.matches("") && !treatmentTwo.matches("") && !effectSizeInput.matches("")){
-                double effectSizeAsNumber = parseDouble(effectSizeInput);
-                if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0){
+                final Double effectSizeAsNumber = parseDouble(effectSizeInput);
+                if(effectSizeAsNumber >= 0.0 && effectSizeAsNumber <= 1.0 && Arrays.asList(Constants.POTENTIAL_EFFECT_SIZES).contains(effectSizeAsNumber)){
                     Intent intent = new Intent(AddExperimentActivity.this, ExperimentActivity.class);
                     Experiment newExperiment = new Experiment (name, treatmentOne, treatmentTwo, effectSizeAsNumber);
                     DatabaseReference experimentRef = FirebaseDatabase.getInstance()
@@ -105,7 +107,7 @@ public class AddExperimentActivity extends AppCompatActivity implements View.OnC
                     intent.putExtra("currentExperiment", Parcels.wrap(newExperiment));
                     startActivity(intent);
                 } else{
-                    Toast.makeText(AddExperimentActivity.this, "Effect size must range between 0 and 1.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddExperimentActivity.this, "Effect size must range between 0.1 and 1.0 by increments of 0.1", Toast.LENGTH_SHORT).show();
                 }
             } else{
                 Toast.makeText(AddExperimentActivity.this, "Please make sure to fill out all input fields!", Toast.LENGTH_SHORT).show();
